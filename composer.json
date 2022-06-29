@@ -1,0 +1,35 @@
+{
+    "name": "guyliangilsing/php-validation",
+    "description": "A simple validation library that allows you to write custom validators for your data.",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Guylian Gilsing",
+            "email": "gilsingguylian@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "PHPValidation\\": "./src"
+        }
+    },
+    "require-dev": {
+        "nunomaduro/phpinsights": "^2.2",
+        "phpunit/phpunit": "9.5"
+    },
+    "config": {
+        "allow-plugins": {
+            "dealerdirect/phpcodesniffer-composer-installer": true
+        }
+    },
+    "scripts": {
+        "tests:unit": "./vendor/bin/phpunit --configuration phpunit.xml --testsuite unit",
+        "tests:unit-debug": "./vendor/bin/phpunit --configuration phpunit.xml --testsuite unit --debug",
+        "tests:integration": "./vendor/bin/phpunit --configuration phpunit.xml --testsuite integration",
+        "tests:integration-debug": "./vendor/bin/phpunit --configuration phpunit.xml --testsuite integration --debug",
+        "code:win-insights-cli": "./vendor/bin/phpinsights.bat analyse -v",
+        "code:lin-insights-cli": "./vendor/bin/phpinsights analyse -v",
+        "code:win-insights-json": "./vendor/bin/phpinsights.bat analyse -v --format=json > phpinsights.json"
+    }
+}

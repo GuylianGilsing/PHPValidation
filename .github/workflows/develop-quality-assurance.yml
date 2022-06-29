@@ -1,0 +1,28 @@
+name: "Quality assurance on develop branche"
+on:
+  push:
+    branches: ["develop"]
+jobs:
+  quality-assurance:
+    runs-on: "ubuntu-latest"
+    steps:
+      # Action setup
+      - name: Go to this branche
+        uses: actions/checkout@v2
+      # PHP setup
+      - name: Setup PHP with tools
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.1'
+          extensions: curl, mbstring, openssl
+          tools: composer
+      # Composer setup
+      - name: Install composer packages
+        run: composer install
+      # Checks
+      - name: Run static code analysis
+        run: composer run code:lin-insights-cli
+      - name: Run unit tests
+        run: composer run tests:unit
+      - name: Run integration tests
+        run: composer run tests:integration
