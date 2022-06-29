@@ -11,7 +11,10 @@
     ],
     "autoload": {
         "psr-4": {
-            "PHPValidation\\": "./src"
+            "PHPValidation\\": "./src",
+            "PHPValidation\\Configuration\\": "./src/Configuration",
+            "PHPValidation\\FieldValidators\\": "./src/FieldValidators",
+            "PHPValidation\\Strategies\\": "./src/Strategies"
         }
     },
     "require-dev": {
