@@ -12,10 +12,13 @@
     "autoload": {
         "psr-4": {
             "PHPValidation\\": "./src",
-            "PHPValidation\\Configuration\\": "./src/Configuration",
-            "PHPValidation\\FieldValidators\\": "./src/FieldValidators",
+            "PHPValidation\\Builders\\": "./src/Builders",
+            "PHPValidation\\Fields\\": "./src/Configuration",
             "PHPValidation\\Strategies\\": "./src/Strategies"
-        }
+        },
+        "files": [
+            "./src/Functions/fieldValidators.php"
+        ]
     },
     "require-dev": {
         "nunomaduro/phpinsights": "^2.2",
