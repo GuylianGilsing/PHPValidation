@@ -15,10 +15,7 @@
             "PHPValidation\\Builders\\": "./src/Builders",
             "PHPValidation\\Fields\\": "./src/Configuration",
             "PHPValidation\\Strategies\\": "./src/Strategies"
-        },
-        "files": [
-            "./src/Functions/fieldValidators.php"
-        ]
+        }
     },
     "require-dev": {
         "nunomaduro/phpinsights": "^2.2",
