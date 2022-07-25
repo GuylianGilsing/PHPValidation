@@ -69,6 +69,10 @@ return [
         \NunoMaduro\PhpInsights\Domain\Sniffs\ForbiddenSetterSniff::class,
         \SlevomatCodingStandard\Sniffs\TypeHints\DisallowMixedTypeHintSniff::class,
         \SlevomatCodingStandard\Sniffs\Classes\SuperfluousExceptionNamingSniff::class,
+        \SlevomatCodingStandard\Sniffs\Functions\UnusedParameterSniff::class,
+        \NunoMaduro\PhpInsights\Domain\Insights\ForbiddenDefineFunctions::class,
+        \NunoMaduro\PhpInsights\Domain\Insights\CyclomaticComplexityIsHigh::class,
+        \SlevomatCodingStandard\Sniffs\Functions\FunctionLengthSniff::class,
     ],
 
     'config' => [

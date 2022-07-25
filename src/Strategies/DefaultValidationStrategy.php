@@ -52,7 +52,12 @@ final class DefaultValidationStrategy implements ValidationStrategyInterface
      */
     public function run(array $data): void
     {
-        $this->validationErrorMessages = $this->recursiveGetErrorMessages($this->validators, $data, $this->customErrorMessages, $data);
+        $this->validationErrorMessages = $this->recursiveGetErrorMessages(
+            $this->validators,
+            $data,
+            $this->customErrorMessages,
+            $data
+        );
     }
 
     public function isValid(): bool
@@ -147,6 +152,8 @@ final class DefaultValidationStrategy implements ValidationStrategyInterface
     /**
      * @param array<FieldValidatorInterface> $fieldValidators
      * @param array<mixed> $givenData The data that is given to the validator.
+     *
+     * @return array<string, string|array<string, mixed>>
      */
     private function getErrorMessagesFromFieldValidatorsArray(
         array $fieldValidators,
@@ -174,7 +181,13 @@ final class DefaultValidationStrategy implements ValidationStrategyInterface
         return $errorMessages;
     }
 
-    function replaceErrorMessagesWithCustomOnes(
+    /**
+     * @param array<string, string|array<string, mixed>> $errorMessages
+     * @param array<string, string|array<string, mixed>> $customErrorMessages
+     *
+     * @return array<string, string|array<string, mixed>>
+     */
+    private function replaceErrorMessagesWithCustomOnes(
         string $fieldKey,
         array $errorMessages,
         array $customErrorMessages
