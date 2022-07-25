@@ -5,11 +5,12 @@ declare(strict_types=1);
 namespace PHPValidation\Builders;
 
 use ErrorException;
+use PHPValidation\Strategies\DefaultValidationStrategy;
 use PHPValidation\Strategies\ValidationStrategyInterface;
 use PHPValidation\Validator;
 use PHPValidation\ValidatorInterface;
 
-final class ValidationBuilder
+final class ValidatorBuilder
 {
     private ValidationStrategyInterface $strategy;
     private string $validatorClassName = Validator::class;
@@ -25,6 +26,11 @@ final class ValidationBuilder
      * where each field has a key => string pair that displays a custom error message.
      */
     private array $errorMessages = [];
+
+    public function __construct()
+    {
+        $this->strategy = new DefaultValidationStrategy();
+    }
 
     /**
      * @param array<string, FieldValidatorInterface|array<string, mixed>> $validators An infinite associative array
