@@ -14,6 +14,7 @@ interface FieldValidatorInterface
     public function getKey(): string;
 
     /**
+     * @param mixed $fieldData The data that the current field has. Defaults to null when the field does not exist.
      * @param array<mixed> $givenData The data that is given to the validator.
      */
     public function isValid(bool $fieldExists, mixed $fieldData, array $givenData): bool;

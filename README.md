@@ -25,6 +25,8 @@ PHPValidation comes with the following features:
 - Custom field validator support
 - Built-in field validators for basic use-cases
     - `required` field validator
+    - `notEmpty` field validator for strings and arrays
+    - `isArray` field validator
 
 ## Installation
 ```bash

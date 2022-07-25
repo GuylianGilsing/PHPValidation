@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace PHPValidation\Functions;
 
 use PHPValidation\Fields\FieldValidatorInterface;
+use PHPValidation\Fields\IsArrayField;
 use PHPValidation\Fields\NotEmptyField;
 use PHPValidation\Fields\RequiredField;
 
@@ -22,4 +23,12 @@ function required(): FieldValidatorInterface
 function notEmpty(): FieldValidatorInterface
 {
     return new NotEmptyField();
+}
+
+/**
+ * The value of this field must be an array.
+ */
+function isArray(): FieldValidatorInterface
+{
+    return new IsArrayField();
 }
