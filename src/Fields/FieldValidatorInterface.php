@@ -12,6 +12,11 @@ interface FieldValidatorInterface
     public function fieldNeedsToExist(): bool;
 
     public function getKey(): string;
-    public function isValid(bool $fieldExists, mixed $data): bool;
+
+    /**
+     * @param array<mixed> $givenData The data that is given to the validator.
+     */
+    public function isValid(bool $fieldExists, mixed $fieldData, array $givenData): bool;
+
     public function getErrorMessage(): string;
 }

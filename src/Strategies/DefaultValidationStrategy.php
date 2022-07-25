@@ -52,7 +52,7 @@ final class DefaultValidationStrategy implements ValidationStrategyInterface
      */
     public function run(array $data): void
     {
-        $this->validationErrorMessages = $this->recursiveGetErrorMessages($this->validators, $data, $this->customErrorMessages);
+        $this->validationErrorMessages = $this->recursiveGetErrorMessages($this->validators, $data, $this->customErrorMessages, $data);
     }
 
     public function isValid(): bool
@@ -64,9 +64,16 @@ final class DefaultValidationStrategy implements ValidationStrategyInterface
      * @param array<string, FieldValidatorInterface|array<string, mixed>> $validators
      * @param array<string, mixed> $data
      * @param array<string, string|array<string, mixed>> $customErrorMessages
+     * @param array<mixed> $givenData The data that is given to the validator.
+     *
+     * @return array<string, string|array<string, mixed>>
      */
-    private function recursiveGetErrorMessages(array $validators, array $data, array $customErrorMessages): array
-    {
+    private function recursiveGetErrorMessages(
+        array $validators,
+        array $data,
+        array $customErrorMessages,
+        array $givenData
+    ): array {
         $errorMessages = [];
 
         foreach ($validators as $fieldKey => $fieldValidators)
@@ -79,7 +86,8 @@ final class DefaultValidationStrategy implements ValidationStrategyInterface
                 $fieldErrorMessages = $this->getErrorMessagesFromFieldValidatorsArray(
                     $fieldValidators,
                     $fieldExists,
-                    $fieldValue
+                    $fieldValue,
+                    $givenData
                 );
 
                 if (count($fieldErrorMessages) > 0)
@@ -101,7 +109,12 @@ final class DefaultValidationStrategy implements ValidationStrategyInterface
                     $nestedCustomErrorMessages = $customErrorMessages[$fieldKey];
                 }
 
-                $nestedErrorMessages = $this->recursiveGetErrorMessages($fieldValidators, $nestedData, $nestedCustomErrorMessages);
+                $nestedErrorMessages = $this->recursiveGetErrorMessages(
+                    $fieldValidators,
+                    $nestedData,
+                    $nestedCustomErrorMessages,
+                    $givenData
+                );
 
                 if (count($nestedErrorMessages) > 0)
                 {
@@ -133,11 +146,13 @@ final class DefaultValidationStrategy implements ValidationStrategyInterface
 
     /**
      * @param array<FieldValidatorInterface> $fieldValidators
+     * @param array<mixed> $givenData The data that is given to the validator.
      */
     private function getErrorMessagesFromFieldValidatorsArray(
         array $fieldValidators,
         bool $fieldExists,
-        mixed $data
+        mixed $data,
+        array $givenData
     ): array {
         $errorMessages = [];
 
@@ -149,7 +164,7 @@ final class DefaultValidationStrategy implements ValidationStrategyInterface
                 continue;
             }
 
-            if (!$fieldValidator->isValid($fieldExists, $data))
+            if (!$fieldValidator->isValid($fieldExists, $data, $givenData))
             {
                 $errorMessages[$fieldValidator->getKey()] = $fieldValidator->getErrorMessage();
                 break;

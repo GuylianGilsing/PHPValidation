@@ -16,7 +16,10 @@ final class RequiredField implements FieldValidatorInterface
         return 'required';
     }
 
-    public function isValid(bool $fieldExists, mixed $data): bool
+    /**
+     * @param array<mixed> $givenData
+     */
+    public function isValid(bool $fieldExists, mixed $fieldData, array $givenData): bool
     {
         return $fieldExists;
     }
