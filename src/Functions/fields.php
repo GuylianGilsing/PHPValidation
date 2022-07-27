@@ -6,6 +6,7 @@ namespace PHPValidation\Functions;
 
 use PHPValidation\Fields\FieldValidatorInterface;
 use PHPValidation\Fields\HasValuesField;
+use PHPValidation\Fields\InField;
 use PHPValidation\Fields\IsArrayField;
 use PHPValidation\Fields\NotEmptyField;
 use PHPValidation\Fields\RequiredField;
@@ -42,4 +43,12 @@ function isArray(): FieldValidatorInterface
 function hasValues(array $values): FieldValidatorInterface
 {
     return new HasValuesField($values);
+}
+
+/**
+ * This array field must contain one of the values within a given array.
+ */
+function in(array $values)
+{
+    return new InField($values);
 }
