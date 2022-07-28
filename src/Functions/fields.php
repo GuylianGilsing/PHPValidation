@@ -8,6 +8,7 @@ use PHPValidation\Fields\FieldValidatorInterface;
 use PHPValidation\Fields\HasValuesField;
 use PHPValidation\Fields\InField;
 use PHPValidation\Fields\IsArrayField;
+use PHPValidation\Fields\MaxLengthField;
 use PHPValidation\Fields\MinLengthField;
 use PHPValidation\Fields\NotEmptyField;
 use PHPValidation\Fields\RequiredField;
@@ -60,4 +61,12 @@ function in(array $values): FieldValidatorInterface
 function minLength(int $length): FieldValidatorInterface
 {
     return new MinLengthField($length);
+}
+
+/**
+ * The value of this field cannot contain more than a certain amount of characters.
+ */
+function maxLength(int $length): FieldValidatorInterface
+{
+    return new MaxLengthField($length);
 }
