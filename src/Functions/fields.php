@@ -8,6 +8,7 @@ use PHPValidation\Fields\FieldValidatorInterface;
 use PHPValidation\Fields\HasValuesField;
 use PHPValidation\Fields\InField;
 use PHPValidation\Fields\IsArrayField;
+use PHPValidation\Fields\MinLengthField;
 use PHPValidation\Fields\NotEmptyField;
 use PHPValidation\Fields\RequiredField;
 
@@ -48,7 +49,15 @@ function hasValues(array $values): FieldValidatorInterface
 /**
  * This array field must contain one of the values within a given array.
  */
-function in(array $values)
+function in(array $values): FieldValidatorInterface
 {
     return new InField($values);
+}
+
+/**
+ * The value of this field must contain at least a certain amount of characters.
+ */
+function minLength(int $length): FieldValidatorInterface
+{
+    return new MinLengthField($length);
 }

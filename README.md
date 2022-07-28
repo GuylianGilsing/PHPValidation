@@ -29,6 +29,7 @@ PHPValidation comes with the following features:
     - `isArray` field validator
     - `hasValues` field validator for arrays
     - `in` field validator for arrays
+    - `minLength` field validator for strings
 
 ## Installation
 ```bash
