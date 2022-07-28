@@ -9,6 +9,7 @@ use PHPValidation\Fields\HasValuesField;
 use PHPValidation\Fields\InField;
 use PHPValidation\Fields\IsArrayField;
 use PHPValidation\Fields\MaxLengthField;
+use PHPValidation\Fields\MinCountField;
 use PHPValidation\Fields\MinLengthField;
 use PHPValidation\Fields\NotEmptyField;
 use PHPValidation\Fields\RequiredField;
@@ -69,4 +70,12 @@ function minLength(int $length): FieldValidatorInterface
 function maxLength(int $length): FieldValidatorInterface
 {
     return new MaxLengthField($length);
+}
+
+/**
+ * The value of this array field must contain at least a certain amount of values.
+ */
+function minCount(int $count): FieldValidatorInterface
+{
+    return new MinCountField($count);
 }
