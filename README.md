@@ -32,6 +32,7 @@ PHPValidation comes with the following features:
     - `minLength` field validator for strings
     - `maxLength` field validator for strings
     - `minCount` field validator for arrays
+    - `maxCount` field validator for arrays
 
 ## Installation
 ```bash
