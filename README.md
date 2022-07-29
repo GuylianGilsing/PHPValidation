@@ -15,6 +15,17 @@ A simple validation library that allows you to write custom validators for your 
         - [Configuring custom error messages](#configuring-custom-error-messages)
         - [Using the validator](#using-the-validator)
         - [Creating custom field validators](#creating-custom-field-validators)
+    - [Available field validators](#available-field-validators)
+        - [required](#required)
+        - [notEmpty](#notempty)
+        - [isArray](#isarray)
+        - [hasKeys](#haskeys)
+        - [hasValues](#hasvalues)
+        - [in](#in)
+        - [minLength](#minlength)
+        - [maxLength](#maxlength)
+        - [minCount](#mincount)
+        - [maxCount](#maxcount)
 
 <!-- /TOC -->
 
@@ -187,7 +198,7 @@ final class RequiredField implements FieldValidatorInterface
 }
 ```
 
-It is recommended to create a simple function that wraps your custom validator. PHPValidation has a lot of built-in validators that are being wrapped in the following way:
+It is recommended to create a simple function that wraps your custom validator. PHPValidation comes with some basic built-in validators that are being wrapped in the following way:
 
 ```php
 declare(strict_types=1);
@@ -237,3 +248,95 @@ $builder->setValidators([
 $validator = $builder->build();
 ```
 
+## Available field validators
+PHPValidation comes with some built-in field validators that should cover basic use cases.
+
+### required
+When added, this field key must be present in an array.
+
+```php
+$builder->setValidators([
+    'field' => [required()],
+]);
+```
+
+### notEmpty
+When added, and the field exists, it cannot be empty or contain only whitespace. This validator works on both `string` and `array` fields.
+
+```php
+$builder->setValidators([
+    'field' => [notEmpty()],
+]);
+```
+
+### isArray
+When added, and the field exists, it must be of the type `array`.
+
+```php
+$builder->setValidators([
+    'field' => [isArray()],
+]);
+```
+
+### hasKeys
+When added, and the field exists, and the field is of the type `array`, it must have all of the stated keys.
+
+```php
+$builder->setValidators([
+    'field' => [hasKeys('key1', 'key2', 'key3')],
+]);
+```
+
+### hasValues
+When added, and the field exists, and the field is of the type `array`, it must have all of the stated values.
+
+```php
+$builder->setValidators([
+    'field' => [hasValues(['value1', 'value2', 'value3'])],
+]);
+```
+
+### in
+When added, and the field exists, and the field is of the type `string`, it can only contain one of the stated values.
+
+```php
+$builder->setValidators([
+    'field' => [in(['option1', 'option2', 'option3'])],
+]);
+```
+
+### minLength
+When added, and the field exists, and the field is of the type `string`, it must have a minimum amount of characters.
+
+```php
+$builder->setValidators([
+    'field' => [minLength(5)],
+]);
+```
+
+### maxLength
+When added, and the field exists, and the field is of the type `string`, it cannot have more than a certain amount of characters.
+
+```php
+$builder->setValidators([
+    'field' => [maxLength(10)],
+]);
+```
+
+### minCount
+When added, and the field exists, and the field is of the type `array`, it must have a minimum amount of values.
+
+```php
+$builder->setValidators([
+    'field' => [minCount(2)],
+]);
+```
+
+### maxCount
+When added, and the field exists, and the field is of the type `array`, it cannot have more than a certain amount of values.
+
+```php
+$builder->setValidators([
+    'field' => [maxCount(4)],
+]);
+```
