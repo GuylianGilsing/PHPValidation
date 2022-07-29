@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace PHPValidation\Functions;
 
 use PHPValidation\Fields\FieldValidatorInterface;
+use PHPValidation\Fields\HasKeysField;
 use PHPValidation\Fields\HasValuesField;
 use PHPValidation\Fields\InField;
 use PHPValidation\Fields\IsArrayField;
@@ -40,6 +41,16 @@ function isArray(): FieldValidatorInterface
 }
 
 /**
+ * This array field must contain all given keys.
+ *
+ * @param array<mixed> $keys An indexed array of key names.
+ */
+function hasKeys(array $keys): FieldValidatorInterface
+{
+    return new HasKeysField($keys);
+}
+
+/**
  * This array field must contain all given values.
  *
  * @param array<mixed> $values An indexed array.
@@ -51,6 +62,8 @@ function hasValues(array $values): FieldValidatorInterface
 
 /**
  * This array field must contain one of the values within a given array.
+ *
+ * @param array<mixed> $values An indexed array.
  */
 function in(array $values): FieldValidatorInterface
 {

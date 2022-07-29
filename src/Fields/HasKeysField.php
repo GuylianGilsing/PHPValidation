@@ -4,21 +4,21 @@ declare(strict_types=1);
 
 namespace PHPValidation\Fields;
 
-final class HasValuesField implements FieldValidatorInterface
+final class HasKeysField implements FieldValidatorInterface
 {
     /**
-     * @var array<mixed> $values
+     * @var array<mixed> $keys
      */
-    private array $values = [];
+    private array $keys = [];
 
     /**
-     * This array field must contain all given values.
+     * This array field must contain all given keys.
      *
-     * @param array<mixed> $values An indexed array.
+     * @param array<mixed> $keys An indexed array of key names.
      */
-    public function __construct(array $values)
+    public function __construct(array $keys)
     {
-        $this->values = $values;
+        $this->keys = $keys;
     }
 
     public function fieldNeedsToExist(): bool
@@ -28,7 +28,7 @@ final class HasValuesField implements FieldValidatorInterface
 
     public function getKey(): string
     {
-        return 'hasValues';
+        return 'hasKeys';
     }
 
     /**
@@ -41,11 +41,11 @@ final class HasValuesField implements FieldValidatorInterface
             return false;
         }
 
-        $fieldValues = array_values($fieldData);
+        $fieldKeys = array_keys($fieldData);
 
-        foreach ($this->values as $requiredValue)
+        foreach ($this->keys as $requiredKey)
         {
-            if (!in_array($requiredValue, $fieldValues))
+            if (!in_array($requiredKey, $fieldKeys))
             {
                 return false;
             }
@@ -56,6 +56,6 @@ final class HasValuesField implements FieldValidatorInterface
 
     public function getErrorMessage(): string
     {
-        return 'This field must contain all following values: '.implode(', ', $this->values);
+        return 'This field must contain all following keys: '.implode(', ', $this->keys);
     }
 }

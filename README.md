@@ -27,6 +27,7 @@ PHPValidation comes with the following features:
     - `required` field validator
     - `notEmpty` field validator for strings and arrays
     - `isArray` field validator
+    - `hasKeys` field validator for arrays
     - `hasValues` field validator for arrays
     - `in` field validator for arrays
     - `minLength` field validator for strings
