@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace PHPValidation\Functions;
 
+use PHPValidation\Fields\EmailField;
 use PHPValidation\Fields\FieldValidatorInterface;
 use PHPValidation\Fields\HasKeysField;
 use PHPValidation\Fields\HasValuesField;
@@ -100,4 +101,12 @@ function minCount(int $count): FieldValidatorInterface
 function maxCount(int $count): FieldValidatorInterface
 {
     return new MaxCountField($count);
+}
+
+/**
+ * The value of this field must be an RFC 5322 compliant email address.
+ */
+function email(): FieldValidatorInterface
+{
+    return new EmailField();
 }

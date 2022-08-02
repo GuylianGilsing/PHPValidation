@@ -26,6 +26,7 @@ A simple validation library that allows you to write custom validators for your 
         - [maxLength](#maxlength)
         - [minCount](#mincount)
         - [maxCount](#maxcount)
+        - [email](#email)
 
 <!-- /TOC -->
 
@@ -45,6 +46,7 @@ PHPValidation comes with the following features:
     - `maxLength` field validator for strings
     - `minCount` field validator for arrays
     - `maxCount` field validator for arrays
+    - `email` field validator for strings
 
 ## Installation
 ```bash
@@ -338,5 +340,14 @@ When added, and the field exists, and the field is of the type `array`, it canno
 ```php
 $builder->setValidators([
     'field' => [maxCount(4)],
+]);
+```
+
+### email
+When added, and the field exists, and the field is of the type `string`, it will check for an RFC 5322 compliant email address.
+
+```php
+$builder->setValidators([
+    'field' => [email()],
 ]);
 ```
