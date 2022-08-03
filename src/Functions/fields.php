@@ -10,6 +10,7 @@ use PHPValidation\Fields\HasKeysField;
 use PHPValidation\Fields\HasValuesField;
 use PHPValidation\Fields\InField;
 use PHPValidation\Fields\IsArrayField;
+use PHPValidation\Fields\IsNumericField;
 use PHPValidation\Fields\MaxCountField;
 use PHPValidation\Fields\MaxLengthField;
 use PHPValidation\Fields\MinCountField;
@@ -109,4 +110,9 @@ function maxCount(int $count): FieldValidatorInterface
 function email(): FieldValidatorInterface
 {
     return new EmailField();
+}
+
+function isNumeric(): FieldValidatorInterface
+{
+    return new IsNumericField();
 }

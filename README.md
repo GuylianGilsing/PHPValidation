@@ -27,6 +27,7 @@ A simple validation library that allows you to write custom validators for your 
         - [minCount](#mincount)
         - [maxCount](#maxcount)
         - [email](#email)
+        - [isNumeric](#isnumeric)
 
 <!-- /TOC -->
 
@@ -47,6 +48,7 @@ PHPValidation comes with the following features:
     - `minCount` field validator for arrays
     - `maxCount` field validator for arrays
     - `email` field validator for strings
+    - `isNumeric` field validator for strings, floats, and integers
 
 ## Installation
 ```bash
@@ -349,5 +351,14 @@ When added, and the field exists, and the field is of the type `string`, it will
 ```php
 $builder->setValidators([
     'field' => [email()],
+]);
+```
+
+### isNumeric
+When added, and the field exists, and the field is of the following types: `string`, `float`, `int`, it will check if the given values are numeric.
+
+```php
+$builder->setValidators([
+    'field' => [isNumeric()],
 ]);
 ```
