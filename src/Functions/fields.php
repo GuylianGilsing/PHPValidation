@@ -10,6 +10,8 @@ use PHPValidation\Fields\HasKeysField;
 use PHPValidation\Fields\HasValuesField;
 use PHPValidation\Fields\InField;
 use PHPValidation\Fields\IsArrayField;
+use PHPValidation\Fields\IsFloatField;
+use PHPValidation\Fields\IsIntegerField;
 use PHPValidation\Fields\IsNumericField;
 use PHPValidation\Fields\MaxCountField;
 use PHPValidation\Fields\MaxLengthField;
@@ -112,7 +114,26 @@ function email(): FieldValidatorInterface
     return new EmailField();
 }
 
+/**
+ * The value of this field must be numeric.
+ */
 function isNumeric(): FieldValidatorInterface
 {
     return new IsNumericField();
+}
+
+/**
+ * The value of this field must contain an integer value.
+ */
+function isInt(): FieldValidatorInterface
+{
+    return new IsIntegerField();
+}
+
+/**
+ * The value of this field must contain a floating point value.
+ */
+function isFloat(): FieldValidatorInterface
+{
+    return new IsFloatField();
 }

@@ -28,6 +28,8 @@ A simple validation library that allows you to write custom validators for your 
         - [maxCount](#maxcount)
         - [email](#email)
         - [isNumeric](#isnumeric)
+        - [isInt](#isint)
+        - [isFloat](#isfloat)
 
 <!-- /TOC -->
 
@@ -49,6 +51,8 @@ PHPValidation comes with the following features:
     - `maxCount` field validator for arrays
     - `email` field validator for strings
     - `isNumeric` field validator for strings, floats, and integers
+    - `isInt` field validator for strings and integers
+    - `isFloat` field validator for for strings, floats, and integers
 
 ## Installation
 ```bash
@@ -355,10 +359,28 @@ $builder->setValidators([
 ```
 
 ### isNumeric
-When added, and the field exists, and the field is of the following types: `string`, `float`, `int`, it will check if the given values are numeric.
+When added, and the field exists, and the field is of the following types: `string`, `float`, `int`, it will check if the given value is numeric.
 
 ```php
 $builder->setValidators([
     'field' => [isNumeric()],
+]);
+```
+
+### isInt
+When added, and the field exists, and the field is of the following types: `string`, `int`, it will check if the given value can be converted to an integer, and thus is an integer.
+
+```php
+$builder->setValidators([
+    'field' => [isInt()],
+]);
+```
+
+### isFloat
+When added, and the field exists, and the field is of the following types: `string`, `float`, `int`, it will check if the given value can be converted to a float without losing any data, and thus is an float.
+
+```php
+$builder->setValidators([
+    'field' => [isFloat()],
 ]);
 ```
