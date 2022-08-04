@@ -30,6 +30,7 @@ A simple validation library that allows you to write custom validators for your 
         - [isNumeric](#isnumeric)
         - [isInt](#isint)
         - [isFloat](#isfloat)
+        - [equals](#equals)
 
 <!-- /TOC -->
 
@@ -53,6 +54,7 @@ PHPValidation comes with the following features:
     - `isNumeric` field validator for strings, floats, and integers
     - `isInt` field validator for strings and integers
     - `isFloat` field validator for for strings, floats, and integers
+    - `equals` field validator for any given data type
 
 ## Installation
 ```bash
@@ -382,5 +384,15 @@ When added, and the field exists, and the field is of the following types: `stri
 ```php
 $builder->setValidators([
     'field' => [isFloat()],
+]);
+```
+
+### equals
+When added, and the field exists, it will check if the given value matches the field value. This validator supports strict and non-strict value validation.
+
+```php
+$builder->setValidators([
+    'nonStrictField' => [equals('non-strict', false)],
+    'strictField' => [equals('strict', true)],
 ]);
 ```

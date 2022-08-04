@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace PHPValidation\Functions;
 
 use PHPValidation\Fields\EmailField;
+use PHPValidation\Fields\EqualsField;
 use PHPValidation\Fields\FieldValidatorInterface;
 use PHPValidation\Fields\HasKeysField;
 use PHPValidation\Fields\HasValuesField;
@@ -136,4 +137,9 @@ function isInt(): FieldValidatorInterface
 function isFloat(): FieldValidatorInterface
 {
     return new IsFloatField();
+}
+
+function equals(mixed $value, bool $strict = false): FieldValidatorInterface
+{
+    return new EqualsField($value, $strict);
 }
