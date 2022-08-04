@@ -32,6 +32,69 @@ final class InFieldTest extends TestCase
         $this->assertEmpty($errorMessages);
     }
 
+    public function testIfIntegerValueThatIsInArrayIsValid(): void
+    {
+        // Arrange
+        $builder = new ValidatorBuilder();
+
+        $builder->setValidators([
+            'field' => [in([1, 2, 3])],
+        ]);
+
+        $validator = $builder->build();
+
+        // Act
+        $isValid = $validator->isValid(['field' => 2]);
+
+        // Assert
+        $errorMessages = $validator->getErrorMessages();
+
+        $this->assertTrue($isValid);
+        $this->assertEmpty($errorMessages);
+    }
+
+    public function testIfFloatValueThatIsInArrayIsValid(): void
+    {
+        // Arrange
+        $builder = new ValidatorBuilder();
+
+        $builder->setValidators([
+            'field' => [in([1.20, 2.20, 3.20])],
+        ]);
+
+        $validator = $builder->build();
+
+        // Act
+        $isValid = $validator->isValid(['field' => 2.20]);
+
+        // Assert
+        $errorMessages = $validator->getErrorMessages();
+
+        $this->assertTrue($isValid);
+        $this->assertEmpty($errorMessages);
+    }
+
+    public function testIfBoolValueThatIsInArrayIsValid(): void
+    {
+        // Arrange
+        $builder = new ValidatorBuilder();
+
+        $builder->setValidators([
+            'field' => [in([true])],
+        ]);
+
+        $validator = $builder->build();
+
+        // Act
+        $isValid = $validator->isValid(['field' => true]);
+
+        // Assert
+        $errorMessages = $validator->getErrorMessages();
+
+        $this->assertTrue($isValid);
+        $this->assertEmpty($errorMessages);
+    }
+
     public function testIfValueThatIsNotInArrayIsInvalid(): void
     {
         // Arrange

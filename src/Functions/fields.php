@@ -19,6 +19,7 @@ use PHPValidation\Fields\MaxLengthField;
 use PHPValidation\Fields\MinCountField;
 use PHPValidation\Fields\MinLengthField;
 use PHPValidation\Fields\NotEmptyField;
+use PHPValidation\Fields\NotInField;
 use PHPValidation\Fields\RequiredField;
 
 /**
@@ -73,6 +74,16 @@ function hasValues(array $values): FieldValidatorInterface
 function in(array $values): FieldValidatorInterface
 {
     return new InField($values);
+}
+
+/**
+ * This array field cannot contain one of the stated values.
+ *
+ * @param array<mixed> $values An indexed array.
+ */
+function notIn(array $values): FieldValidatorInterface
+{
+    return new NotInField($values);
 }
 
 /**

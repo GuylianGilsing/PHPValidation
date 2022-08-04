@@ -22,6 +22,7 @@ A simple validation library that allows you to write custom validators for your 
         - [hasKeys](#haskeys)
         - [hasValues](#hasvalues)
         - [in](#in)
+        - [notIn](#notin)
         - [minLength](#minlength)
         - [maxLength](#maxlength)
         - [minCount](#mincount)
@@ -45,7 +46,8 @@ PHPValidation comes with the following features:
     - `isArray` field validator
     - `hasKeys` field validator for arrays
     - `hasValues` field validator for arrays
-    - `in` field validator for arrays
+    - `in` field validator for strings, floats, integers, and booleans
+    - `notIn` field validator for strings, floats, integers, and booleans
     - `minLength` field validator for strings
     - `maxLength` field validator for strings
     - `minCount` field validator for arrays
@@ -307,11 +309,20 @@ $builder->setValidators([
 ```
 
 ### in
-When added, and the field exists, and the field is of the type `string`, it can only contain one of the stated values.
+When added, and the field exists, and the field is of the type `string`, `int`, `float`, and `bool`, it can only contain one of the stated values.
 
 ```php
 $builder->setValidators([
     'field' => [in(['option1', 'option2', 'option3'])],
+]);
+```
+
+### notIn
+When added, and the field exists, and the field is of the type `string`, `int`, `float`, and `bool`, it cannot contain one of the stated values.
+
+```php
+$builder->setValidators([
+    'field' => [notIn(['option1', 'option2', 'option3'])],
 ]);
 ```
 

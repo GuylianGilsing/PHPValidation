@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace PHPValidation\Fields;
 
-final class InField implements FieldValidatorInterface
+final class NotInField implements FieldValidatorInterface
 {
     /**
      * @var array<mixed> $values
@@ -12,7 +12,7 @@ final class InField implements FieldValidatorInterface
     private array $values = [];
 
     /**
-     * This array field must contain one of the values within a given array.
+     * This array field must not contain one of the values within a given array.
      *
      * @param array<mixed> $values An indexed array.
      */
@@ -28,7 +28,7 @@ final class InField implements FieldValidatorInterface
 
     public function getKey(): string
     {
-        return 'in';
+        return 'notIn';
     }
 
     /**
@@ -41,7 +41,7 @@ final class InField implements FieldValidatorInterface
             return false;
         }
 
-        return in_array($fieldData, $this->values);
+        return !in_array($fieldData, $this->values);
     }
 
     public function getErrorMessage(): string
