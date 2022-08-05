@@ -283,7 +283,7 @@ $builder->setValidators([
 ```
 
 ### notEmpty
-When added, and the field exists, it cannot be empty or contain only whitespace. This validator works on both `string` and `array` fields.
+When added, and the field exists, and the field is of the type `string` or `array`, it cannot be empty or contain only whitespace.
 
 ```php
 $builder->setValidators([
@@ -319,7 +319,7 @@ $builder->setValidators([
 ```
 
 ### in
-When added, and the field exists, and the field is of the type `string`, `int`, `float`, and `bool`, it can only contain one of the stated values.
+When added, and the field exists, and the field is of the type `string`, `int`, `float`, or `bool`, it can only contain one of the stated values.
 
 ```php
 $builder->setValidators([
@@ -328,7 +328,7 @@ $builder->setValidators([
 ```
 
 ### notIn
-When added, and the field exists, and the field is of the type `string`, `int`, `float`, and `bool`, it cannot contain one of the stated values.
+When added, and the field exists, and the field is of the type `string`, `int`, `float`, or `bool`, it cannot contain one of the stated values.
 
 ```php
 $builder->setValidators([
@@ -382,7 +382,7 @@ $builder->setValidators([
 ```
 
 ### isNumeric
-When added, and the field exists, and the field is of the following types: `string`, `float`, `int`, it will check if the given value is numeric.
+When added, and the field exists, and the field is of the following types: `string`, `float`, or `int`, it will check if the given value is numeric.
 
 ```php
 $builder->setValidators([
@@ -391,7 +391,7 @@ $builder->setValidators([
 ```
 
 ### isInt
-When added, and the field exists, and the field is of the following types: `string`, `int`, it will check if the given value can be converted to an integer, and thus is an integer.
+When added, and the field exists, and the field is of the following types: `string` or `int`, it will check if the given value can be converted to an integer, and thus is an integer.
 
 ```php
 $builder->setValidators([
@@ -400,7 +400,7 @@ $builder->setValidators([
 ```
 
 ### isFloat
-When added, and the field exists, and the field is of the following types: `string`, `float`, `int`, it will check if the given value can be converted to a float without losing any data, and thus is an float.
+When added, and the field exists, and the field is of the following types: `string`, `float`, or `int`, it will check if the given value can be converted to a float without losing any data, and thus is an float.
 
 ```php
 $builder->setValidators([
@@ -419,7 +419,7 @@ $builder->setValidators([
 ```
 
 ### greaterThan
-When added, and the field exists, and the field is of the following types: `string`, `float`, `int`, it will check if the given value is greater than the field value.
+When added, and the field exists, and the field is of the following types: `string`, `float`, or `int`, it will check if the given value is greater than the field value.
 
 ```php
 $builder->setValidators([
@@ -428,7 +428,7 @@ $builder->setValidators([
 ```
 
 ### greaterEqual
-When added, and the field exists, and the field is of the following types: `string`, `float`, `int`, it will check if the given value is greater than, or equal to, the field value.
+When added, and the field exists, and the field is of the following types: `string`, `float`, or `int`, it will check if the given value is greater than, or equal to, the field value.
 
 ```php
 $builder->setValidators([
@@ -437,25 +437,25 @@ $builder->setValidators([
 ```
 
 ### lowerThan
-When added, and the field exists, and the field is of the following types: `string`, `float`, `int`, it will check if the given value is lower than the field value.
+When added, and the field exists, and the field is of the following types: `string`, `float`, or `int`, it will check if the given value is lower than the field value.
 
 ```php
 $builder->setValidators([
-    'field' => [greaterThan(30)],
+    'field' => [lowerThan(30)],
 ]);
 ```
 
 ### lowerEqual
-When added, and the field exists, and the field is of the following types: `string`, `float`, `int`, it will check if the given value is lower than, or equal to, the field value.
+When added, and the field exists, and the field is of the following types: `string`, `float`, or `int`, it will check if the given value is lower than, or equal to, the field value.
 
 ```php
 $builder->setValidators([
-    'field' => [greaterEqual(30)],
+    'field' => [lowerEqual(30)],
 ]);
 ```
 
 ### between
-When added, and the field exists, and the field is of the following types: `string`, `float`, `int`, it will check if the given value is between two given values.
+When added, and the field exists, and the field is of the following types: `string`, `float`, or `int`, it will check if the given value is between two given values.
 
 ```php
 $builder->setValidators([
