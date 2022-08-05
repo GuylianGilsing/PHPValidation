@@ -36,6 +36,7 @@ A simple validation library that allows you to write custom validators for your 
         - [greaterEqual](#greaterequal)
         - [lowerThan](#lowerthan)
         - [lowerEqual](#lowerequal)
+        - [between](#between)
 
 <!-- /TOC -->
 
@@ -61,10 +62,11 @@ PHPValidation comes with the following features:
     - `isInt` field validator for strings and integers
     - `isFloat` field validator for for strings, floats, and integers
     - `equals` field validator for any given data type
-    - `greaterThan` field validator for floats and integers
-    - `greaterEqual` field validator for floats and integers
-    - `lowerThan` field validator for floats and integers
-    - `lowerEqual` field validator for floats and integers
+    - `greaterThan` field validator for numeric strings, floats, and integers
+    - `greaterEqual` field validator for numeric strings, floats, and integers
+    - `lowerThan` field validator for numeric strings, floats, and integers
+    - `lowerEqual` field validator for numeric strings, floats, and integers
+    - `between` field validator for numeric strings, floats, and integers
 
 ## Installation
 ```bash
@@ -449,5 +451,14 @@ When added, and the field exists, and the field is of the following types: `stri
 ```php
 $builder->setValidators([
     'field' => [greaterEqual(30)],
+]);
+```
+
+### between
+When added, and the field exists, and the field is of the following types: `string`, `float`, `int`, it will check if the given value is between two given values.
+
+```php
+$builder->setValidators([
+    'field' => [between(0, 100)],
 ]);
 ```

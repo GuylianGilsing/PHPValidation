@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace PHPValidation\Functions;
 
+use PHPValidation\Fields\BetweenField;
 use PHPValidation\Fields\EmailField;
 use PHPValidation\Fields\EqualsField;
 use PHPValidation\Fields\FieldValidatorInterface;
@@ -192,4 +193,12 @@ function lowerThan(int|float $value): FieldValidatorInterface
 function lowerEqual(int|float $value): FieldValidatorInterface
 {
     return new LowerEqualField($value);
+}
+
+/**
+ * The value of this field must be between two given values.
+ */
+function between(int|float $min, int|float $max): FieldValidatorInterface
+{
+    return new BetweenField($min, $max);
 }
