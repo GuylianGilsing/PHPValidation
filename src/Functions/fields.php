@@ -7,6 +7,8 @@ namespace PHPValidation\Functions;
 use PHPValidation\Fields\EmailField;
 use PHPValidation\Fields\EqualsField;
 use PHPValidation\Fields\FieldValidatorInterface;
+use PHPValidation\Fields\GreaterEqualField;
+use PHPValidation\Fields\GreaterThanField;
 use PHPValidation\Fields\HasKeysField;
 use PHPValidation\Fields\HasValuesField;
 use PHPValidation\Fields\InField;
@@ -14,6 +16,8 @@ use PHPValidation\Fields\IsArrayField;
 use PHPValidation\Fields\IsFloatField;
 use PHPValidation\Fields\IsIntegerField;
 use PHPValidation\Fields\IsNumericField;
+use PHPValidation\Fields\LowerEqualField;
+use PHPValidation\Fields\LowerThanField;
 use PHPValidation\Fields\MaxCountField;
 use PHPValidation\Fields\MaxLengthField;
 use PHPValidation\Fields\MinCountField;
@@ -150,7 +154,42 @@ function isFloat(): FieldValidatorInterface
     return new IsFloatField();
 }
 
+/**
+ * The value of this field must be equal to the given value.
+ */
 function equals(mixed $value, bool $strict = false): FieldValidatorInterface
 {
     return new EqualsField($value, $strict);
+}
+
+/**
+ * The value of this field must be greater than the given value.
+ */
+function greaterThan(int|float $value): FieldValidatorInterface
+{
+    return new GreaterThanField($value);
+}
+
+/**
+ * The value of this field must be greater than, or equal to, the given value.
+ */
+function greaterEqual(int|float $value): FieldValidatorInterface
+{
+    return new GreaterEqualField($value);
+}
+
+/**
+ * The value of this field must be lower than the given value.
+ */
+function lowerThan(int|float $value): FieldValidatorInterface
+{
+    return new LowerThanField($value);
+}
+
+/**
+ * The value of this field must be lower than, or equal to, the given value.
+ */
+function lowerEqual(int|float $value): FieldValidatorInterface
+{
+    return new LowerEqualField($value);
 }

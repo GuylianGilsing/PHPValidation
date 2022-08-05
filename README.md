@@ -32,6 +32,10 @@ A simple validation library that allows you to write custom validators for your 
         - [isInt](#isint)
         - [isFloat](#isfloat)
         - [equals](#equals)
+        - [greaterThan](#greaterthan)
+        - [greaterEqual](#greaterequal)
+        - [lowerThan](#lowerthan)
+        - [lowerEqual](#lowerequal)
 
 <!-- /TOC -->
 
@@ -57,6 +61,10 @@ PHPValidation comes with the following features:
     - `isInt` field validator for strings and integers
     - `isFloat` field validator for for strings, floats, and integers
     - `equals` field validator for any given data type
+    - `greaterThan` field validator for floats and integers
+    - `greaterEqual` field validator for floats and integers
+    - `lowerThan` field validator for floats and integers
+    - `lowerEqual` field validator for floats and integers
 
 ## Installation
 ```bash
@@ -405,5 +413,41 @@ When added, and the field exists, it will check if the given value matches the f
 $builder->setValidators([
     'nonStrictField' => [equals('non-strict', false)],
     'strictField' => [equals('strict', true)],
+]);
+```
+
+### greaterThan
+When added, and the field exists, and the field is of the following types: `string`, `float`, `int`, it will check if the given value is greater than the field value.
+
+```php
+$builder->setValidators([
+    'field' => [greaterThan(30)],
+]);
+```
+
+### greaterEqual
+When added, and the field exists, and the field is of the following types: `string`, `float`, `int`, it will check if the given value is greater than, or equal to, the field value.
+
+```php
+$builder->setValidators([
+    'field' => [greaterEqual(30)],
+]);
+```
+
+### lowerThan
+When added, and the field exists, and the field is of the following types: `string`, `float`, `int`, it will check if the given value is lower than the field value.
+
+```php
+$builder->setValidators([
+    'field' => [greaterThan(30)],
+]);
+```
+
+### lowerEqual
+When added, and the field exists, and the field is of the following types: `string`, `float`, `int`, it will check if the given value is lower than, or equal to, the field value.
+
+```php
+$builder->setValidators([
+    'field' => [greaterEqual(30)],
 ]);
 ```

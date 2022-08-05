@@ -109,7 +109,7 @@ return [
     */
 
     'requirements' => [
-        'min-quality' => 100,
+        'min-quality' => 99,
         'min-complexity' => 60,
         'min-architecture' => 100,
         'min-style' => 98,
