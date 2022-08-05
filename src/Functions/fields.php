@@ -14,6 +14,7 @@ use PHPValidation\Fields\HasKeysField;
 use PHPValidation\Fields\HasValuesField;
 use PHPValidation\Fields\InField;
 use PHPValidation\Fields\IsArrayField;
+use PHPValidation\Fields\IsDateField;
 use PHPValidation\Fields\IsFloatField;
 use PHPValidation\Fields\IsIntegerField;
 use PHPValidation\Fields\IsNumericField;
@@ -201,4 +202,12 @@ function lowerEqual(int|float $value): FieldValidatorInterface
 function between(int|float $min, int|float $max): FieldValidatorInterface
 {
     return new BetweenField($min, $max);
+}
+
+/**
+ * The value of this field must be a date string, or an object that implements the `DateTimeInterface` interface.
+ */
+function isDate(): FieldValidatorInterface
+{
+    return new IsDateField();
 }

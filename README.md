@@ -37,6 +37,7 @@ A simple validation library that allows you to write custom validators for your 
         - [lowerThan](#lowerthan)
         - [lowerEqual](#lowerequal)
         - [between](#between)
+        - [isDate](#isdate)
 
 <!-- /TOC -->
 
@@ -67,6 +68,7 @@ PHPValidation comes with the following features:
     - `lowerThan` field validator for numeric strings, floats, and integers
     - `lowerEqual` field validator for numeric strings, floats, and integers
     - `between` field validator for numeric strings, floats, and integers
+    - `isDate` field validator for date strings and objects that implement the DateTimeInterface interface
 
 ## Installation
 ```bash
@@ -460,5 +462,16 @@ When added, and the field exists, and the field is of the following types: `stri
 ```php
 $builder->setValidators([
     'field' => [between(0, 100)],
+]);
+```
+
+### isDate
+When added, and the field exists, and the field is of the following type `string` or implements the `DateTimeInterface` interface, it will check if the given is a date string or an object that implements the `DateTimeInterface` interface.
+
+**Note**: This field uses php's `strtotime()` function to check if a string is indeed a date string.
+
+```php
+$builder->setValidators([
+    'field' => [isDate()],
 ]);
 ```
