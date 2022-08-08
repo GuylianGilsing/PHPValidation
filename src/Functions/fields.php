@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace PHPValidation\Functions;
 
 use PHPValidation\Fields\BetweenField;
+use PHPValidation\Fields\DateHasFormatField;
 use PHPValidation\Fields\EmailField;
 use PHPValidation\Fields\EqualsField;
 use PHPValidation\Fields\FieldValidatorInterface;
@@ -210,4 +211,9 @@ function between(int|float $min, int|float $max): FieldValidatorInterface
 function isDate(): FieldValidatorInterface
 {
     return new IsDateField();
+}
+
+function dateHasFormat(string $format): FieldValidatorInterface
+{
+    return new DateHasFormatField($format);
 }
