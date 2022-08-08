@@ -110,6 +110,50 @@ final class DateHasFormatFieldTest extends TestCase
         $this->assertEmpty($errorMessages);
     }
 
+    public function testIfDateImmutableObjectWithMatchingFormatIsValid(): void
+    {
+        // Arrange
+        $builder = new ValidatorBuilder();
+
+        $builder->setValidators([
+            'field' => [dateHasFormat('Y-m-d')],
+        ]);
+
+        $validator = $builder->build();
+
+        // Act
+        $isValid = $validator->isValid(['field' => DateTimeImmutable::createFromFormat('Y-m-d', '2000-12-31')]); // Used format: Y-m-d
+
+        // Assert
+        $errorMessages = $validator->getErrorMessages();
+
+        $this->assertTrue($isValid);
+        $this->assertEmpty($errorMessages);
+    }
+
+    public function testIfDateImmutableObjectWithNonMatchingFormatIsValid(): void
+    {
+        // Arrange
+        $builder = new ValidatorBuilder();
+
+        $fieldValidator = dateHasFormat('Y-m-d');
+
+        $builder->setValidators([
+            'field' => [$fieldValidator],
+        ]);
+
+        $validator = $builder->build();
+
+        // Act
+        $isValid = $validator->isValid(['field' => DateTimeImmutable::createFromFormat('d-m-Y', '31-12-2000')]); // Used format: d-m-Y
+
+        // Assert
+        $errorMessages = $validator->getErrorMessages();
+
+        $this->assertTrue($isValid);
+        $this->assertEmpty($errorMessages);
+    }
+
     public function testIfNonDateStringIsInvalid(): void
     {
         // Arrange
