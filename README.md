@@ -28,6 +28,7 @@ A simple validation library that allows you to write custom validators for your 
         - [minCount](#mincount)
         - [maxCount](#maxcount)
         - [email](#email)
+        - [isAlphabetic](#isalphabetic)
         - [isNumeric](#isnumeric)
         - [isInt](#isint)
         - [isFloat](#isfloat)
@@ -61,6 +62,7 @@ PHPValidation comes with the following features:
     - `minCount` field validator for arrays
     - `maxCount` field validator for arrays
     - `email` field validator for strings
+    - `isAlphabetic` field validator for strings
     - `isNumeric` field validator for strings, floats, and integers
     - `isInt` field validator for strings and integers
     - `isFloat` field validator for for strings, floats, and integers
@@ -384,6 +386,15 @@ When added, and the field exists, and the field is of the type `string`, it will
 ```php
 $builder->setValidators([
     'field' => [email()],
+]);
+```
+
+### isAlphabetic
+When added, and the field exists, and the field is of the type `string`, it will check if its value only contains normal, non-special, characters and whitespace.
+
+```php
+$builder->setValidators([
+    'field' => [isAlphabetic()],
 ]);
 ```
 

@@ -16,6 +16,7 @@ use PHPValidation\Fields\GreaterThanField;
 use PHPValidation\Fields\HasKeysField;
 use PHPValidation\Fields\HasValuesField;
 use PHPValidation\Fields\InField;
+use PHPValidation\Fields\IsAlphabeticField;
 use PHPValidation\Fields\IsArrayField;
 use PHPValidation\Fields\IsDateField;
 use PHPValidation\Fields\IsFloatField;
@@ -133,6 +134,14 @@ function maxCount(int $count): FieldValidatorInterface
 function email(): FieldValidatorInterface
 {
     return new EmailField();
+}
+
+/**
+ * The value of this field can only contain normal, non-special, characters and whitespace.
+ */
+function isAlphabetic(): FieldValidatorInterface
+{
+    return new IsAlphabeticField();
 }
 
 /**
