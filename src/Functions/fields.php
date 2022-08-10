@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 namespace PHPValidation\Functions;
 
+use DateTimeInterface;
 use PHPValidation\Fields\BetweenField;
+use PHPValidation\Fields\DateEqualsField;
 use PHPValidation\Fields\DateHasFormatField;
 use PHPValidation\Fields\EmailField;
 use PHPValidation\Fields\EqualsField;
@@ -213,7 +215,18 @@ function isDate(): FieldValidatorInterface
     return new IsDateField();
 }
 
+/**
+ * The value of this field must have the given date format.
+ */
 function dateHasFormat(string $format): FieldValidatorInterface
 {
     return new DateHasFormatField($format);
+}
+
+/**
+ * The value of this field must be equal to the given date.
+ */
+function dateEquals(DateTimeInterface $date, string $format = 'Y-m-d H:i:s'): FieldValidatorInterface
+{
+    return new DateEqualsField($date, $format);
 }

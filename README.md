@@ -39,6 +39,7 @@ A simple validation library that allows you to write custom validators for your 
         - [between](#between)
         - [isDate](#isdate)
         - [dateHasFormat](#datehasformat)
+        - [dateEquals](#dateequals)
 
 <!-- /TOC -->
 
@@ -70,6 +71,8 @@ PHPValidation comes with the following features:
     - `lowerEqual` field validator for numeric strings, floats, and integers
     - `between` field validator for numeric strings, floats, and integers
     - `isDate` field validator for date strings and objects that implement the DateTimeInterface interface
+    - `dateHasFormat` field validator for date strings and objects that implement the DateTimeInterface interface
+    - `dateEquals` field validator for date strings and objects that implement the DateTimeInterface interface
 
 ## Installation
 ```bash
@@ -480,8 +483,19 @@ $builder->setValidators([
 ### dateHasFormat
 When added, and the field exists, and the field is of the following type `string` or implements the `DateTimeInterface` interface, it will check if the field uses a given php datetime format.
 
+**Note**: It is recommended to only use this validator with date strings. Objects that implement the `DateTimeInterface` interface will always be valid since they are internally cast back to a string with the given format.
+
 ```php
 $builder->setValidators([
     'field' => [dateHasFormat('Y-m-d')],
+]);
+```
+
+### dateEquals
+When added, and the field exists, and the field is of the following type `string` or implements the `DateTimeInterface` interface, it will check if the field value is equal to a pre-determined date object.
+
+```php
+$builder->setValidators([
+    'field' => [dateEquals(DateTime::createFromFormat('Y-m-d', '2000-12-31'), 'Y-m-d')],
 ]);
 ```
