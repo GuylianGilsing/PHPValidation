@@ -8,7 +8,11 @@ use DateTimeInterface;
 use PHPValidation\Fields\BetweenField;
 use PHPValidation\Fields\ContainsField;
 use PHPValidation\Fields\DateEqualsField;
+use PHPValidation\Fields\DateGreaterEqualField;
+use PHPValidation\Fields\DateGreaterThanField;
 use PHPValidation\Fields\DateHasFormatField;
+use PHPValidation\Fields\DateLowerEqualField;
+use PHPValidation\Fields\DateLowerThanField;
 use PHPValidation\Fields\EmailField;
 use PHPValidation\Fields\EqualsField;
 use PHPValidation\Fields\FieldValidatorInterface;
@@ -259,4 +263,36 @@ function dateHasFormat(string $format): FieldValidatorInterface
 function dateEquals(DateTimeInterface $date, string $format = 'Y-m-d H:i:s'): FieldValidatorInterface
 {
     return new DateEqualsField($date, $format);
+}
+
+/**
+ * The value of this field must be lower than the given date.
+ */
+function dateLowerThan(DateTimeInterface $date, string $format = 'Y-m-d H:i:s'): FieldValidatorInterface
+{
+    return new DateLowerThanField($date, $format);
+}
+
+/**
+ * The value of this field must be lower than, or equal to the given date.
+ */
+function dateLowerEqual(DateTimeInterface $date, string $format = 'Y-m-d H:i:s'): FieldValidatorInterface
+{
+    return new DateLowerEqualField($date, $format);
+}
+
+/**
+ * The value of this field must be greater than the given date.
+ */
+function dateGreaterThan(DateTimeInterface $date, string $format = 'Y-m-d H:i:s'): FieldValidatorInterface
+{
+    return new DateGreaterThanField($date, $format);
+}
+
+/**
+ * The value of this field must be greater than, or equal to the given date.
+ */
+function dateGreaterEqual(DateTimeInterface $date, string $format = 'Y-m-d H:i:s'): FieldValidatorInterface
+{
+    return new DateGreaterEqualField($date, $format);
 }

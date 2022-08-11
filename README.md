@@ -43,6 +43,10 @@ A simple validation library that allows you to write custom validators for your 
         - [isDate](#isdate)
         - [dateHasFormat](#datehasformat)
         - [dateEquals](#dateequals)
+        - [dateLowerThan](#datelowerthan)
+        - [dateLowerEqual](#datelowerequal)
+        - [dateGreaterThan](#dategreaterthan)
+        - [dateGreaterEqual](#dategreaterequal)
 
 <!-- /TOC -->
 
@@ -79,6 +83,10 @@ PHPValidation comes with the following features:
     - `isDate` field validator for date strings and objects that implement the DateTimeInterface interface
     - `dateHasFormat` field validator for date strings and objects that implement the DateTimeInterface interface
     - `dateEquals` field validator for date strings and objects that implement the DateTimeInterface interface
+    - `dateLowerThan` field validator for date strings and objects that implement the DateTimeInterface interface
+    - `dateLowerEqual` field validator for date strings and objects that implement the DateTimeInterface interface
+    - `dateGreaterThan` field validator for date strings and objects that implement the DateTimeInterface interface
+    - `dateGreaterEqual` field validator for date strings and objects that implement the DateTimeInterface interface
 
 ## Installation
 ```bash
@@ -533,5 +541,41 @@ When added, and the field exists, and the field is of the following type `string
 ```php
 $builder->setValidators([
     'field' => [dateEquals(DateTime::createFromFormat('Y-m-d', '2000-12-31'), 'Y-m-d')],
+]);
+```
+
+### dateLowerThan
+When added, and the field exists, and the field is of the following type `string` or implements the `DateTimeInterface` interface, it will check if the given value is lower than the field value.
+
+```php
+$builder->setValidators([
+    'field' => [dateLowerThan(DateTime::createFromFormat('Y-m-d', '2000-12-31'), 'Y-m-d')],
+]);
+```
+
+### dateLowerEqual
+When added, and the field exists, and the field is of the following type `string` or implements the `DateTimeInterface` interface, it will check if the given value is lower than, or equal to, the field value.
+
+```php
+$builder->setValidators([
+    'field' => [dateLowerEqual(DateTime::createFromFormat('Y-m-d', '2000-12-31'), 'Y-m-d')],
+]);
+```
+
+### dateGreaterThan
+When added, and the field exists, and the field is of the following type `string` or implements the `DateTimeInterface` interface, it will check if the given value is greater than the field value.
+
+```php
+$builder->setValidators([
+    'field' => [dateGreaterThan(DateTime::createFromFormat('Y-m-d', '2000-12-31'), 'Y-m-d')],
+]);
+```
+
+### dateGreaterEqual
+When added, and the field exists, and the field is of the following type `string` or implements the `DateTimeInterface` interface, it will check if the given value is greater than, or equal to, the field value.
+
+```php
+$builder->setValidators([
+    'field' => [dateGreaterEqual(DateTime::createFromFormat('Y-m-d', '2000-12-31'), 'Y-m-d')],
 ]);
 ```
