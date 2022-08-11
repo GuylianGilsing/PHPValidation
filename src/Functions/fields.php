@@ -17,6 +17,7 @@ use PHPValidation\Fields\HasKeysField;
 use PHPValidation\Fields\HasValuesField;
 use PHPValidation\Fields\InField;
 use PHPValidation\Fields\IsAlphabeticField;
+use PHPValidation\Fields\IsAlphaNumericField;
 use PHPValidation\Fields\IsArrayField;
 use PHPValidation\Fields\IsDateField;
 use PHPValidation\Fields\IsFloatField;
@@ -150,6 +151,17 @@ function isAlphabetic(): FieldValidatorInterface
 function isNumeric(): FieldValidatorInterface
 {
     return new IsNumericField();
+}
+
+/**
+ * The value of this field can only contain normal, non-special, characters, numbers, and whitespace.
+ *
+ * @param array<string> $extraCharacters An indexed array of strings that contain characters that can exist
+ * within the string.
+ */
+function isAlphaNumeric(array $extraCharacters = []): FieldValidatorInterface
+{
+    return new IsAlphaNumericField($extraCharacters);
 }
 
 /**

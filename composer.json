@@ -13,7 +13,8 @@
         "psr-4": {
             "PHPValidation\\": "./src",
             "PHPValidation\\Builders\\": "./src/Builders",
-            "PHPValidation\\Fields\\": "./src/Configuration",
+            "PHPValidation\\Fields\\": "./src/Fields",
+            "PHPValidation\\Helpers\\": "./src/Helpers",
             "PHPValidation\\Strategies\\": "./src/Strategies"
         },
         "files": [

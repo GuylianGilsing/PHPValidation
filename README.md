@@ -30,6 +30,7 @@ A simple validation library that allows you to write custom validators for your 
         - [email](#email)
         - [isAlphabetic](#isalphabetic)
         - [isNumeric](#isnumeric)
+        - [isAlphaNumeric](#isalphanumeric)
         - [isInt](#isint)
         - [isFloat](#isfloat)
         - [equals](#equals)
@@ -64,6 +65,7 @@ PHPValidation comes with the following features:
     - `email` field validator for strings
     - `isAlphabetic` field validator for strings
     - `isNumeric` field validator for strings, floats, and integers
+    - `isAlphaNumeric` field validator for strings
     - `isInt` field validator for strings and integers
     - `isFloat` field validator for for strings, floats, and integers
     - `equals` field validator for any given data type
@@ -404,6 +406,16 @@ When added, and the field exists, and the field is of the following types: `stri
 ```php
 $builder->setValidators([
     'field' => [isNumeric()],
+]);
+```
+
+### isAlphaNumeric
+When added, and the field exists, and the field is of the type `string`, it will check if the given value only contains normal, non-special, characters, numbers, and whitespace. The validator also supports whitelisting extra characters.
+
+```php
+$builder->setValidators([
+    'normalField' => [isAlphaNumeric()],
+    'extraField' => [isAlphaNumeric(['.', ',', '\\', '[', ']'])], // Whitelists each individual character within the array
 ]);
 ```
 
