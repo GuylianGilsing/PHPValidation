@@ -34,6 +34,7 @@ A simple validation library that allows you to write custom validators for your 
         - [isInt](#isint)
         - [isFloat](#isfloat)
         - [equals](#equals)
+        - [contains](#contains)
         - [greaterThan](#greaterthan)
         - [greaterEqual](#greaterequal)
         - [lowerThan](#lowerthan)
@@ -69,6 +70,7 @@ PHPValidation comes with the following features:
     - `isInt` field validator for strings and integers
     - `isFloat` field validator for for strings, floats, and integers
     - `equals` field validator for any given data type
+    - `contains` field validator for strings
     - `greaterThan` field validator for numeric strings, floats, and integers
     - `greaterEqual` field validator for numeric strings, floats, and integers
     - `lowerThan` field validator for numeric strings, floats, and integers
@@ -82,6 +84,8 @@ PHPValidation comes with the following features:
 ```bash
 $ composer require guyliangilsing/php-validation
 ```
+
+**IMPORTANT**: PHPValidation requires php version 8 or higher to work properly.
 
 ## Usage
 ### Obtaining a validator
@@ -444,6 +448,15 @@ When added, and the field exists, it will check if the given value matches the f
 $builder->setValidators([
     'nonStrictField' => [equals('non-strict', false)],
     'strictField' => [equals('strict', true)],
+]);
+```
+
+### contains
+When added, and the field exists, and the field is of the type `string`, it will check if the given value contains a specific substring.
+
+```php
+$builder->setValidators([
+    'field' => [contains('substring')],
 ]);
 ```
 

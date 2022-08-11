@@ -6,6 +6,7 @@ namespace PHPValidation\Functions;
 
 use DateTimeInterface;
 use PHPValidation\Fields\BetweenField;
+use PHPValidation\Fields\ContainsField;
 use PHPValidation\Fields\DateEqualsField;
 use PHPValidation\Fields\DateHasFormatField;
 use PHPValidation\Fields\EmailField;
@@ -186,6 +187,14 @@ function isFloat(): FieldValidatorInterface
 function equals(mixed $value, bool $strict = false): FieldValidatorInterface
 {
     return new EqualsField($value, $strict);
+}
+
+/**
+ * This value of this must contain a specific substring.
+ */
+function contains(string $value): FieldValidatorInterface
+{
+    return new ContainsField($value);
 }
 
 /**
