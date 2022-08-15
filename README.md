@@ -47,6 +47,7 @@ A simple validation library that allows you to write custom validators for your 
         - [dateLowerEqual](#datelowerequal)
         - [dateGreaterThan](#dategreaterthan)
         - [dateGreaterEqual](#dategreaterequal)
+        - [dateBetween](#datebetween)
 
 <!-- /TOC -->
 
@@ -87,6 +88,7 @@ PHPValidation comes with the following features:
     - `dateLowerEqual` field validator for date strings and objects that implement the DateTimeInterface interface
     - `dateGreaterThan` field validator for date strings and objects that implement the DateTimeInterface interface
     - `dateGreaterEqual` field validator for date strings and objects that implement the DateTimeInterface interface
+    - `dateBetween` field validator for date strings and objects that implement the DateTimeInterface interface
 
 ## Installation
 ```bash
@@ -577,5 +579,17 @@ When added, and the field exists, and the field is of the following type `string
 ```php
 $builder->setValidators([
     'field' => [dateGreaterEqual(DateTime::createFromFormat('Y-m-d', '2000-12-31'), 'Y-m-d')],
+]);
+```
+
+### dateBetween
+When added, and the field exists, and the field is of the following type `string` or implements the `DateTimeInterface` interface, it will check if the given value is between two given dates.
+
+```php
+$dateMin = DateTime::createFromFormat('Y-m-d', '2000-12-29');
+$dateMax = DateTime::createFromFormat('Y-m-d', '2000-12-30');
+
+$builder->setValidators([
+    'field' => [dateBetween($dateMin, $dateMax, 'Y-m-d')],
 ]);
 ```

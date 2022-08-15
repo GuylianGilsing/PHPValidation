@@ -7,6 +7,7 @@ namespace PHPValidation\Functions;
 use DateTimeInterface;
 use PHPValidation\Fields\BetweenField;
 use PHPValidation\Fields\ContainsField;
+use PHPValidation\Fields\DateBetweenField;
 use PHPValidation\Fields\DateEqualsField;
 use PHPValidation\Fields\DateGreaterEqualField;
 use PHPValidation\Fields\DateGreaterThanField;
@@ -295,4 +296,15 @@ function dateGreaterThan(DateTimeInterface $date, string $format = 'Y-m-d H:i:s'
 function dateGreaterEqual(DateTimeInterface $date, string $format = 'Y-m-d H:i:s'): FieldValidatorInterface
 {
     return new DateGreaterEqualField($date, $format);
+}
+
+/**
+ * The value of this field must be between two dates.
+ */
+function dateBetween(
+    DateTimeInterface $min,
+    DateTimeInterface $max,
+    string $format = 'Y-m-d H:i:s'
+): FieldValidatorInterface {
+    return new DateBetweenField($min, $max, $format);
 }
