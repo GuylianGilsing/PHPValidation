@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace PHPValidation\Fields;
 
-use PHPValidation\Helpers\Regex;
+use PHPValidation\Helpers\RegexHelper;
 
 final class IsAlphaNumericField implements FieldValidatorInterface
 {
@@ -77,7 +77,7 @@ final class IsAlphaNumericField implements FieldValidatorInterface
 
         foreach ($characters as $character)
         {
-            $rangeBody .= Regex::escapeSpecialCharacters($character);
+            $rangeBody .= RegexHelper::escapeSpecialCharacters($character);
         }
 
         return '['.$rangeBody.']';

@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace PHPValidation\Tests\Unit\Helpers;
 
 use PHPUnit\Framework\TestCase;
-use PHPValidation\Helpers\Regex;
+use PHPValidation\Helpers\RegexHelper;
 
 final class RegexTest extends TestCase
 {
@@ -17,7 +17,7 @@ final class RegexTest extends TestCase
         // Act
         foreach ($specialCharacters as $specialCharacter)
         {
-            $escapedCharacter = Regex::escapeSpecialCharacters($specialCharacter);
+            $escapedCharacter = RegexHelper::escapeSpecialCharacters($specialCharacter);
 
             // Assert
             $this->assertEquals('\\'.$specialCharacter, $escapedCharacter);

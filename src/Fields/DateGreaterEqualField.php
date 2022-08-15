@@ -6,6 +6,7 @@ namespace PHPValidation\Fields;
 
 use DateTime;
 use DateTimeInterface;
+use PHPValidation\Helpers\DateTimeHelper;
 
 final class DateGreaterEqualField implements FieldValidatorInterface
 {
@@ -36,23 +37,11 @@ final class DateGreaterEqualField implements FieldValidatorInterface
      */
     public function isValid(bool $fieldExists, mixed $fieldData, array $givenData): bool
     {
-        if (!is_string($fieldData) && !($fieldData instanceof DateTimeInterface))
+        $fieldDateObject = DateTimeHelper::parseDateTimeObjectFromMixed($fieldData, $this->format);
+
+        if ($fieldDateObject === null)
         {
             return false;
-        }
-
-        $fieldDateObject = $fieldData;
-
-        if (is_string($fieldData))
-        {
-            $strDateObject = DateTime::createFromFormat($this->format, $fieldData);
-
-            if (!($strDateObject instanceof DateTimeInterface))
-            {
-                return false;
-            }
-
-            $fieldDateObject = $strDateObject;
         }
 
         return $fieldDateObject->getTimestamp() >= $this->date->getTimestamp();

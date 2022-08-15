@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace PHPValidation\Helpers;
 
-final class Regex
+final class RegexHelper
 {
     /**
      * Escapes the following special characters: `.` `^` `$` `*` `+` `?` `(` `)` `[` `]` `{` `}` `\` `|`
