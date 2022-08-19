@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace PHPValidation\Fields;
 
-use DateTime;
 use DateTimeInterface;
 use PHPValidation\Helpers\DateTimeHelper;
 

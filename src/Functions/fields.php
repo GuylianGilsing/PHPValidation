@@ -6,6 +6,7 @@ namespace PHPValidation\Functions;
 
 use DateTimeInterface;
 use PHPValidation\Fields\BetweenField;
+use PHPValidation\Fields\ConfirmValuesField;
 use PHPValidation\Fields\ContainsField;
 use PHPValidation\Fields\DateBetweenField;
 use PHPValidation\Fields\DateEqualsField;
@@ -81,6 +82,18 @@ function hasKeys(array $keys): FieldValidatorInterface
 function hasValues(array $values): FieldValidatorInterface
 {
     return new HasValuesField($values);
+}
+
+/**
+ * The value of this field must be equal to the value of a specified array key.
+ *
+ * @param string $keys This key refers to a field within the global validator structure.
+ * Use dot notation to reference nested fields:
+ * `key1.nestedKey1.nestedKey2` translates to `['key1' => ['nestedKey1' => [nestedKey2 => '']]]`
+ */
+function confirmValues(string $keys): FieldValidatorInterface
+{
+    return new ConfirmValuesField($keys);
 }
 
 /**

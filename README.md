@@ -21,6 +21,7 @@ A simple validation library that allows you to write custom validators for your 
         - [isArray](#isarray)
         - [hasKeys](#haskeys)
         - [hasValues](#hasvalues)
+        - [confirmValues](#confirmvalues)
         - [in](#in)
         - [notIn](#notin)
         - [minLength](#minlength)
@@ -62,6 +63,7 @@ PHPValidation comes with the following features:
     - `isArray` field validator
     - `hasKeys` field validator for arrays
     - `hasValues` field validator for arrays
+    - `confirmValues` field validator for arrays
     - `in` field validator for strings, floats, integers, and booleans
     - `notIn` field validator for strings, floats, integers, and booleans
     - `minLength` field validator for strings
@@ -339,6 +341,24 @@ When added, and the field exists, and the field is of the type `array`, it must 
 ```php
 $builder->setValidators([
     'field' => [hasValues(['value1', 'value2', 'value3'])],
+]);
+```
+
+### confirmValues
+When added, and the field exists, the field value must be equal to the value of another field. When specifying which array field value the current field must match, dot notation is used to denote the key tree: `key1.nestedKey1` translates to the following php array:
+
+```php
+[
+    'key1' => [
+        'nestedKey1' => // YOUR VALUE HERE...
+    ],
+]
+```
+
+```php
+$builder->setValidators([
+    'field1' => [confirmValues('field2')], // Targets the key on the first array level
+    'field2' => [confirmValues('field2.nestedField1')], // Targets the key on the second array level
 ]);
 ```
 
