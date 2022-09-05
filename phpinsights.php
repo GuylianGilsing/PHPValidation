@@ -69,6 +69,10 @@ return [
         \NunoMaduro\PhpInsights\Domain\Sniffs\ForbiddenSetterSniff::class,
         \SlevomatCodingStandard\Sniffs\TypeHints\DisallowMixedTypeHintSniff::class,
         \SlevomatCodingStandard\Sniffs\Classes\SuperfluousExceptionNamingSniff::class,
+        \SlevomatCodingStandard\Sniffs\Functions\UnusedParameterSniff::class,
+        \NunoMaduro\PhpInsights\Domain\Insights\ForbiddenDefineFunctions::class,
+        \NunoMaduro\PhpInsights\Domain\Insights\CyclomaticComplexityIsHigh::class,
+        \SlevomatCodingStandard\Sniffs\Functions\FunctionLengthSniff::class,
     ],
 
     'config' => [
@@ -89,7 +93,7 @@ return [
         \PHP_CodeSniffer\Standards\Generic\Sniffs\Files\LineLengthSniff::class => [
             'lineLimit' => 120,
             'absoluteLineLimit' => 120,
-            'ignoreComments' => false,
+            'ignoreComments' => true,
         ],
     ],
 
@@ -105,10 +109,10 @@ return [
     */
 
     'requirements' => [
-        'min-quality' => 100,
+        'min-quality' => 99,
         'min-complexity' => 60,
         'min-architecture' => 100,
-        'min-style' => 100,
+        'min-style' => 98,
         'disable-security-check' => false,
     ],
 

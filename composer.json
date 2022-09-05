@@ -11,8 +11,15 @@
     ],
     "autoload": {
         "psr-4": {
-            "PHPValidation\\": "./src"
-        }
+            "PHPValidation\\": "./src",
+            "PHPValidation\\Builders\\": "./src/Builders",
+            "PHPValidation\\Fields\\": "./src/Fields",
+            "PHPValidation\\Helpers\\": "./src/Helpers",
+            "PHPValidation\\Strategies\\": "./src/Strategies"
+        },
+        "files": [
+            "./src/Functions/fields.php"
+        ]
     },
     "require-dev": {
         "nunomaduro/phpinsights": "^2.2",
