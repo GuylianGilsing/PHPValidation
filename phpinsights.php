@@ -93,7 +93,7 @@ return [
         \PHP_CodeSniffer\Standards\Generic\Sniffs\Files\LineLengthSniff::class => [
             'lineLimit' => 120,
             'absoluteLineLimit' => 120,
-            'ignoreComments' => false,
+            'ignoreComments' => true,
         ],
     ],
 

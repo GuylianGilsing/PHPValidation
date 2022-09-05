@@ -29,6 +29,7 @@ A simple validation library that allows you to write custom validators for your 
         - [minCount](#mincount)
         - [maxCount](#maxcount)
         - [email](#email)
+        - [phoneNumber](#phonenumber)
         - [isAlphabetic](#isalphabetic)
         - [isNumeric](#isnumeric)
         - [isAlphaNumeric](#isalphanumeric)
@@ -71,6 +72,7 @@ PHPValidation comes with the following features:
     - `minCount` field validator for arrays
     - `maxCount` field validator for arrays
     - `email` field validator for strings
+    - `phoneNumber` field validator for strings
     - `isAlphabetic` field validator for strings
     - `isNumeric` field validator for strings, floats, and integers
     - `isAlphaNumeric` field validator for strings
@@ -422,6 +424,18 @@ When added, and the field exists, and the field is of the type `string`, it will
 ```php
 $builder->setValidators([
     'field' => [email()],
+]);
+```
+
+### phoneNumber
+When added, and the field exists, and the field is of the type `string`, it will check for a valid international phone number.
+
+**Note**: This validator does not accept phone numbers delimitted by any characters and/or whitespace.<br/>
+**Note**: It probably will be better to create your own phone number validator since a phone number can differ greatly depending on the country/location.
+
+```php
+$builder->setValidators([
+    'field' => [phoneNumber()],
 ]);
 ```
 

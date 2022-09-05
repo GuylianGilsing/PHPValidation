@@ -38,6 +38,7 @@ use PHPValidation\Fields\MinCountField;
 use PHPValidation\Fields\MinLengthField;
 use PHPValidation\Fields\NotEmptyField;
 use PHPValidation\Fields\NotInField;
+use PHPValidation\Fields\PhoneNumberField;
 use PHPValidation\Fields\RequiredField;
 
 /**
@@ -154,6 +155,14 @@ function maxCount(int $count): FieldValidatorInterface
 function email(): FieldValidatorInterface
 {
     return new EmailField();
+}
+
+/**
+ * The value of this field must be a valid international phone number.
+ */
+function phoneNumber(): FieldValidatorInterface
+{
+    return new PhoneNumberField();
 }
 
 /**
