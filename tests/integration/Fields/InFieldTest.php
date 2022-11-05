@@ -126,6 +126,63 @@ final class InFieldTest extends TestCase
         $this->assertEquals($expectedErrorStructure, $errorMessages);
     }
 
+    public function testIfArrayValueThatIsInArrayIsValid(): void
+    {
+        // Arrange
+        $builder = new ValidatorBuilder();
+
+        $fieldValidator = in(['value1', 'value2', 'value3']);
+        $fieldValue = ['value1', 'value2', 'value3'];
+
+        $builder->setValidators([
+            'field' => [$fieldValidator],
+        ]);
+
+        $validator = $builder->build();
+
+        // Act
+        $isValid = $validator->isValid(['field' => $fieldValue]);
+
+        // Assert
+        $errorMessages = $validator->getErrorMessages();
+
+        $this->assertTrue($isValid);
+        $this->assertEmpty($errorMessages);
+    }
+
+    public function testIfSingularArrayValueThatIsNotInArrayIsInvalid(): void
+    {
+        // Arrange
+        $builder = new ValidatorBuilder();
+
+        $fieldValidator = in(['value1', 'value2', 'value3']);
+        $fieldValue = ['value4'];
+
+        $builder->setValidators([
+            'field' => [$fieldValidator],
+        ]);
+
+        $validator = $builder->build();
+
+        // Act
+        $isValid = $validator->isValid(['field' => $fieldValue]);
+
+        // Assert
+        $errorMessages = $validator->getErrorMessages();
+
+        $this->assertFalse($isValid);
+        $this->assertNotEmpty($errorMessages);
+        $this->assertIsNotString($fieldValue);
+
+        $expectedErrorStructure = [
+            'field' => [
+                $fieldValidator->getKey() => $fieldValidator->getErrorMessage()
+            ]
+        ];
+
+        $this->assertEquals($expectedErrorStructure, $errorMessages);
+    }
+
     public function testIfNonStringValueIsInvalid(): void
     {
         // Arrange

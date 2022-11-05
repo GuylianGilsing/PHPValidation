@@ -65,7 +65,7 @@ PHPValidation comes with the following features:
     - `hasKeys` field validator for arrays
     - `hasValues` field validator for arrays
     - `confirmValues` field validator for arrays
-    - `in` field validator for strings, floats, integers, and booleans
+    - `in` field validator for strings, floats, integers, booleans, and arrays with the previous types inside of them
     - `notIn` field validator for strings, floats, integers, and booleans
     - `minLength` field validator for strings
     - `maxLength` field validator for strings
@@ -365,7 +365,9 @@ $builder->setValidators([
 ```
 
 ### in
-When added, and the field exists, and the field is of the type `string`, `int`, `float`, or `bool`, it can only contain one of the stated values.
+When added, and the field exists, and the field is of the type `string`, `int`, `float`, `bool`, or `array`, it can only contain one of the stated values.
+
+**Note**: When this validator has an array value passed to it, it will only validate the first level of the array.
 
 ```php
 $builder->setValidators([

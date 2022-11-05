@@ -36,9 +36,27 @@ final class InField implements FieldValidatorInterface
      */
     public function isValid(bool $fieldExists, mixed $fieldData, array $givenData): bool
     {
-        if (!is_string($fieldData) && !is_int($fieldData) && !is_float($fieldData) && !is_bool($fieldData))
-        {
+        if (
+            !is_string($fieldData) &&
+            !is_int($fieldData) &&
+            !is_float($fieldData) &&
+            !is_bool($fieldData) &&
+            !is_array($fieldData)
+        ) {
             return false;
+        }
+
+        if (is_array($fieldData))
+        {
+            foreach ($fieldData as $data)
+            {
+                if (!in_array($data, $this->values))
+                {
+                    return false;
+                }
+            }
+
+            return true;
         }
 
         return in_array($fieldData, $this->values);
