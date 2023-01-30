@@ -35,6 +35,8 @@ A simple validation library that allows you to write custom validators for your 
         - [isAlphaNumeric](#isalphanumeric)
         - [isInt](#isint)
         - [isFloat](#isfloat)
+        - [isString](#isstring)
+        - [isObject](#isobject)
         - [equals](#equals)
         - [contains](#contains)
         - [greaterThan](#greaterthan)
@@ -77,7 +79,9 @@ PHPValidation comes with the following features:
     - `isNumeric` field validator for strings, floats, and integers
     - `isAlphaNumeric` field validator for strings
     - `isInt` field validator for strings and integers
-    - `isFloat` field validator for for strings, floats, and integers
+    - `isFloat` field validator for strings, floats, and integers
+    - `isString` field validator for strings
+    - `isObject` field validator for objects
     - `equals` field validator for any given data type
     - `contains` field validator for strings
     - `greaterThan` field validator for numeric strings, floats, and integers
@@ -484,6 +488,24 @@ When added, and the field exists, and the field is of the following types: `stri
 ```php
 $builder->setValidators([
     'field' => [isFloat()],
+]);
+```
+
+### isString
+When added, and the field exists, it will check if the given value is of the type `string`.
+
+```php
+$builder->setValidators([
+    'field' => [isString()],
+]);
+```
+
+### isObject
+When added, and the field exists, it will check if the given value is of the type `object`.
+
+```php
+$builder->setValidators([
+    'field' => [isObject()],
 ]);
 ```
 

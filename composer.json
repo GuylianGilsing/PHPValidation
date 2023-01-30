@@ -21,6 +21,9 @@
             "./src/Functions/fields.php"
         ]
     },
+    "require": {
+        "php": ">=8.1"
+    },
     "require-dev": {
         "nunomaduro/phpinsights": "^2.2",
         "phpunit/phpunit": "9.5"

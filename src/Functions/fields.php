@@ -30,6 +30,8 @@ use PHPValidation\Fields\IsDateField;
 use PHPValidation\Fields\IsFloatField;
 use PHPValidation\Fields\IsIntegerField;
 use PHPValidation\Fields\IsNumericField;
+use PHPValidation\Fields\IsObjectField;
+use PHPValidation\Fields\IsStringField;
 use PHPValidation\Fields\LowerEqualField;
 use PHPValidation\Fields\LowerThanField;
 use PHPValidation\Fields\MaxCountField;
@@ -206,6 +208,22 @@ function isInt(): FieldValidatorInterface
 function isFloat(): FieldValidatorInterface
 {
     return new IsFloatField();
+}
+
+/**
+ * The value of this field must contain a string value.
+ */
+function isString(): FieldValidatorInterface
+{
+    return new IsStringField();
+}
+
+/**
+ * The value of this field must contain an object value.
+ */
+function isObject(): FieldValidatorInterface
+{
+    return new IsObjectField();
 }
 
 /**
