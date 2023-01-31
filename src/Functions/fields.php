@@ -30,6 +30,8 @@ use PHPValidation\Fields\IsDateField;
 use PHPValidation\Fields\IsFloatField;
 use PHPValidation\Fields\IsIntegerField;
 use PHPValidation\Fields\IsNumericField;
+use PHPValidation\Fields\IsObjectField;
+use PHPValidation\Fields\IsStringField;
 use PHPValidation\Fields\LowerEqualField;
 use PHPValidation\Fields\LowerThanField;
 use PHPValidation\Fields\MaxCountField;
@@ -38,6 +40,7 @@ use PHPValidation\Fields\MinCountField;
 use PHPValidation\Fields\MinLengthField;
 use PHPValidation\Fields\NotEmptyField;
 use PHPValidation\Fields\NotInField;
+use PHPValidation\Fields\ObjectOfTypeField;
 use PHPValidation\Fields\PhoneNumberField;
 use PHPValidation\Fields\RequiredField;
 
@@ -206,6 +209,32 @@ function isInt(): FieldValidatorInterface
 function isFloat(): FieldValidatorInterface
 {
     return new IsFloatField();
+}
+
+/**
+ * The value of this field must contain a string value.
+ */
+function isString(): FieldValidatorInterface
+{
+    return new IsStringField();
+}
+
+/**
+ * The value of this field must contain an object value.
+ */
+function isObject(): FieldValidatorInterface
+{
+    return new IsObjectField();
+}
+
+/**
+ * This value of this field must contain an object that has the desired type.
+ *
+ * @param string $type The `Class::name` string of the desired type.
+ */
+function objectOfType(string $type): FieldValidatorInterface
+{
+    return new ObjectOfTypeField($type);
 }
 
 /**
