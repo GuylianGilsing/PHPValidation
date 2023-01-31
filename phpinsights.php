@@ -53,7 +53,8 @@ return [
     */
 
     'exclude' => [
-        //  'path/to/directory-or-file'
+        'tests',
+        'test-utils',
     ],
 
     'add' => [
