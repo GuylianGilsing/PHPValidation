@@ -37,6 +37,7 @@ A simple validation library that allows you to write custom validators for your 
         - [isFloat](#isfloat)
         - [isString](#isstring)
         - [isObject](#isobject)
+        - [objectOfType](#objectoftype)
         - [equals](#equals)
         - [contains](#contains)
         - [greaterThan](#greaterthan)
@@ -506,6 +507,15 @@ When added, and the field exists, it will check if the given value is of the typ
 ```php
 $builder->setValidators([
     'field' => [isObject()],
+]);
+```
+
+### objectOfType
+When added, and the field exists, and the field is of the type `object`, it will check if the given value has a desired object type.
+
+```php
+$builder->setValidators([
+    'field' => [objectOfType(DateTime::clas)],
 ]);
 ```
 

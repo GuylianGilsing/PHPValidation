@@ -40,6 +40,7 @@ use PHPValidation\Fields\MinCountField;
 use PHPValidation\Fields\MinLengthField;
 use PHPValidation\Fields\NotEmptyField;
 use PHPValidation\Fields\NotInField;
+use PHPValidation\Fields\ObjectOfTypeField;
 use PHPValidation\Fields\PhoneNumberField;
 use PHPValidation\Fields\RequiredField;
 
@@ -224,6 +225,16 @@ function isString(): FieldValidatorInterface
 function isObject(): FieldValidatorInterface
 {
     return new IsObjectField();
+}
+
+/**
+ * This value of this field must contain an object that has the desired type.
+ *
+ * @param string $type The `Class::name` string of the desired type.
+ */
+function objectOfType(string $type): FieldValidatorInterface
+{
+    return new ObjectOfTypeField($type);
 }
 
 /**
