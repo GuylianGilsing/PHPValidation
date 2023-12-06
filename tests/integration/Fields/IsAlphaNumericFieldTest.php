@@ -6,6 +6,7 @@ namespace PHPValidation\Tests\Integration\Fields;
 
 use PHPUnit\Framework\TestCase;
 use PHPValidation\Builders\ValidatorBuilder;
+use PHPValidation\Strategies\DefaultValidationStrategy;
 use stdClass;
 
 use function PHPValidation\Functions\isAlphaNumeric;
@@ -15,7 +16,7 @@ final class IsAlphaNumericFieldTest extends TestCase
     public function testIfAlphabeticStringWithoutWhitespaceIsValid(): void
     {
         // Arrange
-        $builder = new ValidatorBuilder();
+        $builder = new ValidatorBuilder(new DefaultValidationStrategy());
 
         $builder->setValidators([
             'field' => [isAlphaNumeric()],
@@ -36,7 +37,7 @@ final class IsAlphaNumericFieldTest extends TestCase
     public function testIfAlphabeticStringWithWhitespaceIsValid(): void
     {
         // Arrange
-        $builder = new ValidatorBuilder();
+        $builder = new ValidatorBuilder(new DefaultValidationStrategy());
 
         $builder->setValidators([
             'field' => [isAlphaNumeric()],
@@ -57,7 +58,7 @@ final class IsAlphaNumericFieldTest extends TestCase
     public function testIfStringWithNumbersIsValid(): void
     {
         // Arrange
-        $builder = new ValidatorBuilder();
+        $builder = new ValidatorBuilder(new DefaultValidationStrategy());
 
         $builder->setValidators([
             'field' => [isAlphaNumeric()],
@@ -78,7 +79,7 @@ final class IsAlphaNumericFieldTest extends TestCase
     public function testIfStringWithWhiteListedCharactersIsValid(): void
     {
         // Arrange
-        $builder = new ValidatorBuilder();
+        $builder = new ValidatorBuilder(new DefaultValidationStrategy());
 
         $builder->setValidators([
             'field' => [isAlphaNumeric(['.', '^', '$', '*', '+', '?', '(', ')', '[', ']', '{', '}', '\\', '|'])],
@@ -99,7 +100,7 @@ final class IsAlphaNumericFieldTest extends TestCase
     public function testIfStringWithSpecialCharactersIsInvalid(): void
     {
         // Arrange
-        $builder = new ValidatorBuilder();
+        $builder = new ValidatorBuilder(new DefaultValidationStrategy());
 
         $builder->setValidators([
             'field' => [isAlphaNumeric()],
@@ -128,7 +129,7 @@ final class IsAlphaNumericFieldTest extends TestCase
     public function testIfStringWithSpecialCharactersAndNumbersIsInvalid(): void
     {
         // Arrange
-        $builder = new ValidatorBuilder();
+        $builder = new ValidatorBuilder(new DefaultValidationStrategy());
 
         $builder->setValidators([
             'field' => [isAlphaNumeric()],
@@ -157,7 +158,7 @@ final class IsAlphaNumericFieldTest extends TestCase
     public function testIfNumbersAreInvalid(): void
     {
         // Arrange
-        $builder = new ValidatorBuilder();
+        $builder = new ValidatorBuilder(new DefaultValidationStrategy());
 
         $builder->setValidators([
             'field' => [isAlphaNumeric()],
@@ -186,7 +187,7 @@ final class IsAlphaNumericFieldTest extends TestCase
     public function testIfArraysAreInvalid(): void
     {
         // Arrange
-        $builder = new ValidatorBuilder();
+        $builder = new ValidatorBuilder(new DefaultValidationStrategy());
 
         $builder->setValidators([
             'field' => [isAlphaNumeric()],
@@ -215,7 +216,7 @@ final class IsAlphaNumericFieldTest extends TestCase
     public function testIfObjectsAreInvalid(): void
     {
         // Arrange
-        $builder = new ValidatorBuilder();
+        $builder = new ValidatorBuilder(new DefaultValidationStrategy());
 
         $builder->setValidators([
             'field' => [isAlphaNumeric()],
@@ -244,7 +245,7 @@ final class IsAlphaNumericFieldTest extends TestCase
     public function testIfNULLValuesAreInvalid(): void
     {
         // Arrange
-        $builder = new ValidatorBuilder();
+        $builder = new ValidatorBuilder(new DefaultValidationStrategy());
 
         $builder->setValidators([
             'field' => [isAlphaNumeric()],

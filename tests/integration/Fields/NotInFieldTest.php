@@ -6,6 +6,7 @@ namespace PHPValidation\Tests\Integration\Fields;
 
 use PHPUnit\Framework\TestCase;
 use PHPValidation\Builders\ValidatorBuilder;
+use PHPValidation\Strategies\DefaultValidationStrategy;
 
 use function PHPValidation\Functions\notIn;
 
@@ -14,7 +15,7 @@ final class NotInFieldTest extends TestCase
     public function testIfValueThatIsNotInArrayIsValid(): void
     {
         // Arrange
-        $builder = new ValidatorBuilder();
+        $builder = new ValidatorBuilder(new DefaultValidationStrategy());
 
         $builder->setValidators([
             'field' => [notIn(['value1', 'value2', 'value3'])],
@@ -35,7 +36,7 @@ final class NotInFieldTest extends TestCase
     public function testIfValueThatIsInArrayIsInvalid(): void
     {
         // Arrange
-        $builder = new ValidatorBuilder();
+        $builder = new ValidatorBuilder(new DefaultValidationStrategy());
 
         $fieldValidator = notIn(['value1', 'value2', 'value3']);
 
@@ -66,7 +67,7 @@ final class NotInFieldTest extends TestCase
     public function testIfIntegerValueThatIsNotInArrayIsValid(): void
     {
         // Arrange
-        $builder = new ValidatorBuilder();
+        $builder = new ValidatorBuilder(new DefaultValidationStrategy());
 
         $builder->setValidators([
             'field' => [notIn([1, 2, 3])],
@@ -87,7 +88,7 @@ final class NotInFieldTest extends TestCase
     public function testIfIntegerValueThatIsInArrayIsInvalid(): void
     {
         // Arrange
-        $builder = new ValidatorBuilder();
+        $builder = new ValidatorBuilder(new DefaultValidationStrategy());
 
         $fieldValidator = notIn([1, 2, 3]);
 
@@ -118,7 +119,7 @@ final class NotInFieldTest extends TestCase
     public function testIfFloatValueThatIsNotInArrayIsValid(): void
     {
         // Arrange
-        $builder = new ValidatorBuilder();
+        $builder = new ValidatorBuilder(new DefaultValidationStrategy());
 
         $builder->setValidators([
             'field' => [notIn([1.2, 2.2, 3.2])],
@@ -139,7 +140,7 @@ final class NotInFieldTest extends TestCase
     public function testIfFloatValueThatIsInArrayIsInvalid(): void
     {
         // Arrange
-        $builder = new ValidatorBuilder();
+        $builder = new ValidatorBuilder(new DefaultValidationStrategy());
 
         $fieldValidator = notIn([1.2, 2.2, 3.2]);
 
@@ -170,7 +171,7 @@ final class NotInFieldTest extends TestCase
     public function testIfBooleanValueThatIsNotInArrayIsValid(): void
     {
         // Arrange
-        $builder = new ValidatorBuilder();
+        $builder = new ValidatorBuilder(new DefaultValidationStrategy());
 
         $builder->setValidators([
             'field' => [notIn([true])],
@@ -191,7 +192,7 @@ final class NotInFieldTest extends TestCase
     public function testIfBooleanValueThatIsInArrayIsInvalid(): void
     {
         // Arrange
-        $builder = new ValidatorBuilder();
+        $builder = new ValidatorBuilder(new DefaultValidationStrategy());
 
         $fieldValidator = notIn([true]);
 
@@ -222,7 +223,7 @@ final class NotInFieldTest extends TestCase
     public function testIfArrayValueIsInvalid(): void
     {
         // Arrange
-        $builder = new ValidatorBuilder();
+        $builder = new ValidatorBuilder(new DefaultValidationStrategy());
 
         $fieldValidator = notIn(['value1', 'value2', 'value3']);
 

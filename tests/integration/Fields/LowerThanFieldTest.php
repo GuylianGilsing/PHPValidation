@@ -6,6 +6,7 @@ namespace PHPValidation\Tests\Integration\Fields;
 
 use PHPUnit\Framework\TestCase;
 use PHPValidation\Builders\ValidatorBuilder;
+use PHPValidation\Strategies\DefaultValidationStrategy;
 use stdClass;
 
 use function PHPValidation\Functions\lowerThan;
@@ -15,7 +16,7 @@ final class LowerThanFieldTest extends TestCase
     public function testIfIntegerLowerThanFieldIsValid(): void
     {
         // Arrange
-        $builder = new ValidatorBuilder();
+        $builder = new ValidatorBuilder(new DefaultValidationStrategy());
 
         $builder->setValidators([
             'field' => [lowerThan(30)],
@@ -36,7 +37,7 @@ final class LowerThanFieldTest extends TestCase
     public function testIfIntegerEqualsFieldIsInvalid(): void
     {
         // Arrange
-        $builder = new ValidatorBuilder();
+        $builder = new ValidatorBuilder(new DefaultValidationStrategy());
 
         $fieldValidator = lowerThan(30);
 
@@ -67,7 +68,7 @@ final class LowerThanFieldTest extends TestCase
     public function testIfFloatLowerThanFieldIsValid(): void
     {
         // Arrange
-        $builder = new ValidatorBuilder();
+        $builder = new ValidatorBuilder(new DefaultValidationStrategy());
 
         $builder->setValidators([
             'field' => [lowerThan(30)],
@@ -88,7 +89,7 @@ final class LowerThanFieldTest extends TestCase
     public function testIfFloatEqualsFieldIsInvalid(): void
     {
         // Arrange
-        $builder = new ValidatorBuilder();
+        $builder = new ValidatorBuilder(new DefaultValidationStrategy());
 
         $fieldValidator = lowerThan(30);
 
@@ -119,7 +120,7 @@ final class LowerThanFieldTest extends TestCase
     public function testIfStringLowerThanFieldIsValid(): void
     {
         // Arrange
-        $builder = new ValidatorBuilder();
+        $builder = new ValidatorBuilder(new DefaultValidationStrategy());
 
         $builder->setValidators([
             'field' => [lowerThan(30)],
@@ -140,7 +141,7 @@ final class LowerThanFieldTest extends TestCase
     public function testIfStringEqualsFieldIsInvalid(): void
     {
         // Arrange
-        $builder = new ValidatorBuilder();
+        $builder = new ValidatorBuilder(new DefaultValidationStrategy());
 
         $fieldValidator = lowerThan(30);
 
@@ -171,7 +172,7 @@ final class LowerThanFieldTest extends TestCase
     public function testIfNonNumericStringFieldIsInvalid(): void
     {
         // Arrange
-        $builder = new ValidatorBuilder();
+        $builder = new ValidatorBuilder(new DefaultValidationStrategy());
 
         $fieldValidator = lowerThan(30);
 
@@ -202,7 +203,7 @@ final class LowerThanFieldTest extends TestCase
     public function testIfNonNumericStringWithNumbersFieldIsInvalid(): void
     {
         // Arrange
-        $builder = new ValidatorBuilder();
+        $builder = new ValidatorBuilder(new DefaultValidationStrategy());
 
         $fieldValidator = lowerThan(30);
 
@@ -233,7 +234,7 @@ final class LowerThanFieldTest extends TestCase
     public function testIfArrayValueIsInvalid(): void
     {
         // Arrange
-        $builder = new ValidatorBuilder();
+        $builder = new ValidatorBuilder(new DefaultValidationStrategy());
 
         $fieldValidator = lowerThan(30);
 
@@ -264,7 +265,7 @@ final class LowerThanFieldTest extends TestCase
     public function testIfObjectValueIsInvalid(): void
     {
         // Arrange
-        $builder = new ValidatorBuilder();
+        $builder = new ValidatorBuilder(new DefaultValidationStrategy());
 
         $fieldValidator = lowerThan(30);
 

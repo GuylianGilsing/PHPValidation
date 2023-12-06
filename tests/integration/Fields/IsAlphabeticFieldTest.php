@@ -6,6 +6,7 @@ namespace PHPValidation\Tests\Integration\Fields;
 
 use PHPUnit\Framework\TestCase;
 use PHPValidation\Builders\ValidatorBuilder;
+use PHPValidation\Strategies\DefaultValidationStrategy;
 use stdClass;
 
 use function PHPValidation\Functions\isAlphabetic;
@@ -15,7 +16,7 @@ final class IsAlphabeticFieldTest extends TestCase
     public function testIfAlphabeticStringWithoutWhitespaceIsValid(): void
     {
         // Arrange
-        $builder = new ValidatorBuilder();
+        $builder = new ValidatorBuilder(new DefaultValidationStrategy());
 
         $builder->setValidators([
             'field' => [isAlphabetic()],
@@ -36,7 +37,7 @@ final class IsAlphabeticFieldTest extends TestCase
     public function testIfAlphabeticStringWithWhitespaceIsValid(): void
     {
         // Arrange
-        $builder = new ValidatorBuilder();
+        $builder = new ValidatorBuilder(new DefaultValidationStrategy());
 
         $builder->setValidators([
             'field' => [isAlphabetic()],
@@ -57,7 +58,7 @@ final class IsAlphabeticFieldTest extends TestCase
     public function testIfStringWithSpecialCharactersIsInvalid(): void
     {
         // Arrange
-        $builder = new ValidatorBuilder();
+        $builder = new ValidatorBuilder(new DefaultValidationStrategy());
 
         $builder->setValidators([
             'field' => [isAlphabetic()],
@@ -86,7 +87,7 @@ final class IsAlphabeticFieldTest extends TestCase
     public function testIfStringWithNumbersIsInvalid(): void
     {
         // Arrange
-        $builder = new ValidatorBuilder();
+        $builder = new ValidatorBuilder(new DefaultValidationStrategy());
 
         $builder->setValidators([
             'field' => [isAlphabetic()],
@@ -115,7 +116,7 @@ final class IsAlphabeticFieldTest extends TestCase
     public function testIfNumbersAreInvalid(): void
     {
         // Arrange
-        $builder = new ValidatorBuilder();
+        $builder = new ValidatorBuilder(new DefaultValidationStrategy());
 
         $builder->setValidators([
             'field' => [isAlphabetic()],
@@ -144,7 +145,7 @@ final class IsAlphabeticFieldTest extends TestCase
     public function testIfArraysAreInvalid(): void
     {
         // Arrange
-        $builder = new ValidatorBuilder();
+        $builder = new ValidatorBuilder(new DefaultValidationStrategy());
 
         $builder->setValidators([
             'field' => [isAlphabetic()],
@@ -173,7 +174,7 @@ final class IsAlphabeticFieldTest extends TestCase
     public function testIfObjectsAreInvalid(): void
     {
         // Arrange
-        $builder = new ValidatorBuilder();
+        $builder = new ValidatorBuilder(new DefaultValidationStrategy());
 
         $builder->setValidators([
             'field' => [isAlphabetic()],
@@ -202,7 +203,7 @@ final class IsAlphabeticFieldTest extends TestCase
     public function testIfNULLValuesAreInvalid(): void
     {
         // Arrange
-        $builder = new ValidatorBuilder();
+        $builder = new ValidatorBuilder(new DefaultValidationStrategy());
 
         $builder->setValidators([
             'field' => [isAlphabetic()],

@@ -6,6 +6,7 @@ namespace PHPValidation\Tests\Integration\Fields;
 
 use PHPUnit\Framework\TestCase;
 use PHPValidation\Builders\ValidatorBuilder;
+use PHPValidation\Strategies\DefaultValidationStrategy;
 use stdClass;
 
 use function PHPValidation\Functions\between;
@@ -15,7 +16,7 @@ final class BetweenFieldTest extends TestCase
     public function testIfIntegerBetweenMinMaxIsValid(): void
     {
         // Arrange
-        $builder = new ValidatorBuilder();
+        $builder = new ValidatorBuilder(new DefaultValidationStrategy());
 
         $builder->setValidators([
             'field' => [between(0, 100)],
@@ -36,7 +37,7 @@ final class BetweenFieldTest extends TestCase
     public function testIfIntegerMinIsValid(): void
     {
         // Arrange
-        $builder = new ValidatorBuilder();
+        $builder = new ValidatorBuilder(new DefaultValidationStrategy());
 
         $builder->setValidators([
             'field' => [between(0, 100)],
@@ -57,7 +58,7 @@ final class BetweenFieldTest extends TestCase
     public function testIfIntegerMaxIsValid(): void
     {
         // Arrange
-        $builder = new ValidatorBuilder();
+        $builder = new ValidatorBuilder(new DefaultValidationStrategy());
 
         $builder->setValidators([
             'field' => [between(0, 100)],
@@ -78,7 +79,7 @@ final class BetweenFieldTest extends TestCase
     public function testIfIntegerUnderMinIsInvalid(): void
     {
         // Arrange
-        $builder = new ValidatorBuilder();
+        $builder = new ValidatorBuilder(new DefaultValidationStrategy());
 
         $fieldValidator = between(0, 100);
 
@@ -109,7 +110,7 @@ final class BetweenFieldTest extends TestCase
     public function testIfIntegerOverMaxIsInvalid(): void
     {
         // Arrange
-        $builder = new ValidatorBuilder();
+        $builder = new ValidatorBuilder(new DefaultValidationStrategy());
 
         $fieldValidator = between(0, 100);
 
@@ -140,7 +141,7 @@ final class BetweenFieldTest extends TestCase
     public function testIfFloatBetweenMinMaxIsValid(): void
     {
         // Arrange
-        $builder = new ValidatorBuilder();
+        $builder = new ValidatorBuilder(new DefaultValidationStrategy());
 
         $builder->setValidators([
             'field' => [between(0, 100)],
@@ -161,7 +162,7 @@ final class BetweenFieldTest extends TestCase
     public function testIfFloatMinIsValid(): void
     {
         // Arrange
-        $builder = new ValidatorBuilder();
+        $builder = new ValidatorBuilder(new DefaultValidationStrategy());
 
         $builder->setValidators([
             'field' => [between(0, 100)],
@@ -182,7 +183,7 @@ final class BetweenFieldTest extends TestCase
     public function testIfFloatMaxIsValid(): void
     {
         // Arrange
-        $builder = new ValidatorBuilder();
+        $builder = new ValidatorBuilder(new DefaultValidationStrategy());
 
         $builder->setValidators([
             'field' => [between(0, 100)],
@@ -203,7 +204,7 @@ final class BetweenFieldTest extends TestCase
     public function testIfFloatUnderMinIsInvalid(): void
     {
         // Arrange
-        $builder = new ValidatorBuilder();
+        $builder = new ValidatorBuilder(new DefaultValidationStrategy());
 
         $fieldValidator = between(0, 100);
 
@@ -234,7 +235,7 @@ final class BetweenFieldTest extends TestCase
     public function testIfFloatOverMaxIsInvalid(): void
     {
         // Arrange
-        $builder = new ValidatorBuilder();
+        $builder = new ValidatorBuilder(new DefaultValidationStrategy());
 
         $fieldValidator = between(0, 100);
 
@@ -265,7 +266,7 @@ final class BetweenFieldTest extends TestCase
     public function testIfStringBetweenMinMaxIsValid(): void
     {
         // Arrange
-        $builder = new ValidatorBuilder();
+        $builder = new ValidatorBuilder(new DefaultValidationStrategy());
 
         $builder->setValidators([
             'field' => [between(0, 100)],
@@ -286,7 +287,7 @@ final class BetweenFieldTest extends TestCase
     public function testIfStringMinIsValid(): void
     {
         // Arrange
-        $builder = new ValidatorBuilder();
+        $builder = new ValidatorBuilder(new DefaultValidationStrategy());
 
         $builder->setValidators([
             'field' => [between(0, 100)],
@@ -307,7 +308,7 @@ final class BetweenFieldTest extends TestCase
     public function testIfStringMaxIsValid(): void
     {
         // Arrange
-        $builder = new ValidatorBuilder();
+        $builder = new ValidatorBuilder(new DefaultValidationStrategy());
 
         $builder->setValidators([
             'field' => [between(0, 100)],
@@ -328,7 +329,7 @@ final class BetweenFieldTest extends TestCase
     public function testIfStringUnderMinIsInvalid(): void
     {
         // Arrange
-        $builder = new ValidatorBuilder();
+        $builder = new ValidatorBuilder(new DefaultValidationStrategy());
 
         $fieldValidator = between(0, 100);
 
@@ -359,7 +360,7 @@ final class BetweenFieldTest extends TestCase
     public function testIfStringOverMaxIsInvalid(): void
     {
         // Arrange
-        $builder = new ValidatorBuilder();
+        $builder = new ValidatorBuilder(new DefaultValidationStrategy());
 
         $fieldValidator = between(0, 100);
 
@@ -390,7 +391,7 @@ final class BetweenFieldTest extends TestCase
     public function testIfNonNumericStringFieldIsInvalid(): void
     {
         // Arrange
-        $builder = new ValidatorBuilder();
+        $builder = new ValidatorBuilder(new DefaultValidationStrategy());
 
         $fieldValidator = between(0, 100);
 
@@ -421,7 +422,7 @@ final class BetweenFieldTest extends TestCase
     public function testIfNonNumericStringWithNumbersFieldIsInvalid(): void
     {
         // Arrange
-        $builder = new ValidatorBuilder();
+        $builder = new ValidatorBuilder(new DefaultValidationStrategy());
 
         $fieldValidator = between(0, 100);
 
@@ -452,7 +453,7 @@ final class BetweenFieldTest extends TestCase
     public function testIfArrayValueIsInvalid(): void
     {
         // Arrange
-        $builder = new ValidatorBuilder();
+        $builder = new ValidatorBuilder(new DefaultValidationStrategy());
 
         $fieldValidator = between(0, 100);
 
@@ -483,7 +484,7 @@ final class BetweenFieldTest extends TestCase
     public function testIfObjectValueIsInvalid(): void
     {
         // Arrange
-        $builder = new ValidatorBuilder();
+        $builder = new ValidatorBuilder(new DefaultValidationStrategy());
 
         $fieldValidator = between(0, 100);
 

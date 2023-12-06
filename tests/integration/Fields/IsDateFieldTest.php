@@ -8,6 +8,7 @@ use DateTime;
 use DateTimeImmutable;
 use PHPUnit\Framework\TestCase;
 use PHPValidation\Builders\ValidatorBuilder;
+use PHPValidation\Strategies\DefaultValidationStrategy;
 use stdClass;
 
 use function PHPValidation\Functions\isDate;
@@ -17,7 +18,7 @@ final class IsDateFieldTest extends TestCase
     public function testIfDateStringIsValid(): void
     {
         // Arrange
-        $builder = new ValidatorBuilder();
+        $builder = new ValidatorBuilder(new DefaultValidationStrategy());
 
         $builder->setValidators([
             'field' => [isDate()],
@@ -38,7 +39,7 @@ final class IsDateFieldTest extends TestCase
     public function testIfDateTimeObjectIsValid(): void
     {
         // Arrange
-        $builder = new ValidatorBuilder();
+        $builder = new ValidatorBuilder(new DefaultValidationStrategy());
 
         $builder->setValidators([
             'field' => [isDate()],
@@ -59,7 +60,7 @@ final class IsDateFieldTest extends TestCase
     public function testIfDateTimeImmutableObjectIsValid(): void
     {
         // Arrange
-        $builder = new ValidatorBuilder();
+        $builder = new ValidatorBuilder(new DefaultValidationStrategy());
 
         $builder->setValidators([
             'field' => [isDate()],
@@ -80,7 +81,7 @@ final class IsDateFieldTest extends TestCase
     public function testIfNonDateStringIsInvalid(): void
     {
         // Arrange
-        $builder = new ValidatorBuilder();
+        $builder = new ValidatorBuilder(new DefaultValidationStrategy());
 
         $builder->setValidators([
             'field' => [isDate()],
@@ -109,7 +110,7 @@ final class IsDateFieldTest extends TestCase
     public function testIfArrayIsInvalid(): void
     {
         // Arrange
-        $builder = new ValidatorBuilder();
+        $builder = new ValidatorBuilder(new DefaultValidationStrategy());
 
         $builder->setValidators([
             'field' => [isDate()],
@@ -138,7 +139,7 @@ final class IsDateFieldTest extends TestCase
     public function testIfRegularObjectIsInvalid(): void
     {
         // Arrange
-        $builder = new ValidatorBuilder();
+        $builder = new ValidatorBuilder(new DefaultValidationStrategy());
 
         $builder->setValidators([
             'field' => [isDate()],

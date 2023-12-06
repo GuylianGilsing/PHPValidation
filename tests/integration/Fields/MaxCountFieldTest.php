@@ -6,6 +6,7 @@ namespace PHPValidation\Tests\Integration\Fields;
 
 use PHPUnit\Framework\TestCase;
 use PHPValidation\Builders\ValidatorBuilder;
+use PHPValidation\Strategies\DefaultValidationStrategy;
 
 use function PHPValidation\Functions\maxCount;
 
@@ -14,7 +15,7 @@ final class MaxCountFieldTest extends TestCase
     public function testIfFieldWithLessThanMaxCountIsValid(): void
     {
         // Arrange
-        $builder = new ValidatorBuilder();
+        $builder = new ValidatorBuilder(new DefaultValidationStrategy());
 
         $builder->setValidators([
             'field' => [maxCount(3)],
@@ -35,7 +36,7 @@ final class MaxCountFieldTest extends TestCase
     public function testIfFieldWithExactMaxCountIsValid(): void
     {
         // Arrange
-        $builder = new ValidatorBuilder();
+        $builder = new ValidatorBuilder(new DefaultValidationStrategy());
 
         $builder->setValidators([
             'field' => [maxCount(3)],
@@ -56,7 +57,7 @@ final class MaxCountFieldTest extends TestCase
     public function testIfFieldWithMoreMaxCountIsInvalid(): void
     {
         // Arrange
-        $builder = new ValidatorBuilder();
+        $builder = new ValidatorBuilder(new DefaultValidationStrategy());
 
         $fieldValidator = maxCount(3);
 
@@ -87,7 +88,7 @@ final class MaxCountFieldTest extends TestCase
     public function testIfNonArrayFieldIsInvalid(): void
     {
         // Arrange
-        $builder = new ValidatorBuilder();
+        $builder = new ValidatorBuilder(new DefaultValidationStrategy());
 
         $fieldValidator = maxCount(3);
 

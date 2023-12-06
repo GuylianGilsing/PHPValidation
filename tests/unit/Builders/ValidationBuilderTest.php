@@ -7,6 +7,7 @@ namespace PHPValidation\Tests\Unit\Builders;
 use ErrorException;
 use PHPUnit\Framework\TestCase;
 use PHPValidation\Builders\ValidatorBuilder;
+use PHPValidation\Strategies\DefaultValidationStrategy;
 use PHPValidation\Tests\Fixtures\NonRequiredValidator;
 use PHPValidation\Tests\Fixtures\Strategies\MockValidationStrategy;
 use PHPValidation\ValidatorInterface;
@@ -18,7 +19,7 @@ final class ValidatorBuilderTest extends TestCase
     {
         // Arrange
         $strategy = new MockValidationStrategy(false);
-        $builder = new ValidatorBuilder();
+        $builder = new ValidatorBuilder(new DefaultValidationStrategy());
 
         // Act
         $builder->setStrategy($strategy);
@@ -33,7 +34,7 @@ final class ValidatorBuilderTest extends TestCase
     public function testIfCannotSetNonRequiredClass(): void
     {
         // Arrange
-        $builder = new ValidatorBuilder();
+        $builder = new ValidatorBuilder(new DefaultValidationStrategy());
 
         // Assert
         $this->expectException(ErrorException::class);
@@ -46,7 +47,7 @@ final class ValidatorBuilderTest extends TestCase
     public function testIfCannotSetNonValidatorInterfaceClass(): void
     {
         // Arrange
-        $builder = new ValidatorBuilder();
+        $builder = new ValidatorBuilder(new DefaultValidationStrategy());
 
         // Assert
         $this->expectException(ErrorException::class);

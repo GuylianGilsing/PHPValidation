@@ -6,6 +6,7 @@ namespace PHPValidation\Tests\Integration\Fields;
 
 use PHPUnit\Framework\TestCase;
 use PHPValidation\Builders\ValidatorBuilder;
+use PHPValidation\Strategies\DefaultValidationStrategy;
 use stdClass;
 
 use function PHPValidation\Functions\greaterEqual;
@@ -15,7 +16,7 @@ final class GreaterEqualFieldTest extends TestCase
     public function testIfIntegerGreaterThanFieldIsValid(): void
     {
         // Arrange
-        $builder = new ValidatorBuilder();
+        $builder = new ValidatorBuilder(new DefaultValidationStrategy());
 
         $builder->setValidators([
             'field' => [greaterEqual(30)],
@@ -36,7 +37,7 @@ final class GreaterEqualFieldTest extends TestCase
     public function testIfIntegerEqualFieldIsValid(): void
     {
         // Arrange
-        $builder = new ValidatorBuilder();
+        $builder = new ValidatorBuilder(new DefaultValidationStrategy());
 
         $builder->setValidators([
             'field' => [greaterEqual(30)],
@@ -57,7 +58,7 @@ final class GreaterEqualFieldTest extends TestCase
     public function testIfIntegerLowerFieldIsInvalid(): void
     {
         // Arrange
-        $builder = new ValidatorBuilder();
+        $builder = new ValidatorBuilder(new DefaultValidationStrategy());
 
         $fieldValidator = greaterEqual(30);
 
@@ -88,7 +89,7 @@ final class GreaterEqualFieldTest extends TestCase
     public function testIfFloatGreaterThanFieldIsValid(): void
     {
         // Arrange
-        $builder = new ValidatorBuilder();
+        $builder = new ValidatorBuilder(new DefaultValidationStrategy());
 
         $builder->setValidators([
             'field' => [greaterEqual(30)],
@@ -109,7 +110,7 @@ final class GreaterEqualFieldTest extends TestCase
     public function testIfFloatEqualsFieldIsValid(): void
     {
         // Arrange
-        $builder = new ValidatorBuilder();
+        $builder = new ValidatorBuilder(new DefaultValidationStrategy());
 
         $builder->setValidators([
             'field' => [greaterEqual(30)],
@@ -130,7 +131,7 @@ final class GreaterEqualFieldTest extends TestCase
     public function testIfFloatLowerFieldIsInvalid(): void
     {
         // Arrange
-        $builder = new ValidatorBuilder();
+        $builder = new ValidatorBuilder(new DefaultValidationStrategy());
 
         $fieldValidator = greaterEqual(30);
 
@@ -161,7 +162,7 @@ final class GreaterEqualFieldTest extends TestCase
     public function testIfStringGreaterThanFieldIsValid(): void
     {
         // Arrange
-        $builder = new ValidatorBuilder();
+        $builder = new ValidatorBuilder(new DefaultValidationStrategy());
 
         $builder->setValidators([
             'field' => [greaterEqual(30)],
@@ -182,7 +183,7 @@ final class GreaterEqualFieldTest extends TestCase
     public function testIfStringEqualsThanFieldIsValid(): void
     {
         // Arrange
-        $builder = new ValidatorBuilder();
+        $builder = new ValidatorBuilder(new DefaultValidationStrategy());
 
         $builder->setValidators([
             'field' => [greaterEqual(30)],
@@ -203,7 +204,7 @@ final class GreaterEqualFieldTest extends TestCase
     public function testIfStringLowerFieldIsInvalid(): void
     {
         // Arrange
-        $builder = new ValidatorBuilder();
+        $builder = new ValidatorBuilder(new DefaultValidationStrategy());
 
         $fieldValidator = greaterEqual(30);
 
@@ -234,7 +235,7 @@ final class GreaterEqualFieldTest extends TestCase
     public function testIfNonNumericStringFieldIsInvalid(): void
     {
         // Arrange
-        $builder = new ValidatorBuilder();
+        $builder = new ValidatorBuilder(new DefaultValidationStrategy());
 
         $fieldValidator = greaterEqual(30);
 
@@ -265,7 +266,7 @@ final class GreaterEqualFieldTest extends TestCase
     public function testIfNonNumericStringWithNumbersFieldIsInvalid(): void
     {
         // Arrange
-        $builder = new ValidatorBuilder();
+        $builder = new ValidatorBuilder(new DefaultValidationStrategy());
 
         $fieldValidator = greaterEqual(30);
 
@@ -296,7 +297,7 @@ final class GreaterEqualFieldTest extends TestCase
     public function testIfArrayValueIsInvalid(): void
     {
         // Arrange
-        $builder = new ValidatorBuilder();
+        $builder = new ValidatorBuilder(new DefaultValidationStrategy());
 
         $fieldValidator = greaterEqual(30);
 
@@ -327,7 +328,7 @@ final class GreaterEqualFieldTest extends TestCase
     public function testIfObjectValueIsInvalid(): void
     {
         // Arrange
-        $builder = new ValidatorBuilder();
+        $builder = new ValidatorBuilder(new DefaultValidationStrategy());
 
         $fieldValidator = greaterEqual(30);
 

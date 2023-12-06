@@ -29,11 +29,4 @@ final class ValidatorTest extends TestCase
     {
         return new Validator($strategy);
     }
-
-    private function getValidator(bool $isValidState = true): ValidatorInterface
-    {
-        $strategy = new MockValidationStrategy($isValidState);
-
-        return new Validator($strategy);
-    }
 }

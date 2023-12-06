@@ -6,6 +6,7 @@ namespace PHPValidation\Tests\Integration\Fields;
 
 use PHPUnit\Framework\TestCase;
 use PHPValidation\Builders\ValidatorBuilder;
+use PHPValidation\Strategies\DefaultValidationStrategy;
 
 use function PHPValidation\Functions\isFloat;
 
@@ -14,7 +15,7 @@ final class isFloategerFieldTest extends TestCase
     public function testIfFloatStringIsValid(): void
     {
         // Arrange
-        $builder = new ValidatorBuilder();
+        $builder = new ValidatorBuilder(new DefaultValidationStrategy());
 
         $builder->setValidators([
             'field' => [isFloat()],
@@ -35,7 +36,7 @@ final class isFloategerFieldTest extends TestCase
     public function testIfFloatIsValid(): void
     {
         // Arrange
-        $builder = new ValidatorBuilder();
+        $builder = new ValidatorBuilder(new DefaultValidationStrategy());
 
         $builder->setValidators([
             'field' => [isFloat()],
@@ -56,7 +57,7 @@ final class isFloategerFieldTest extends TestCase
     public function testIfIntegerStringIsValid(): void
     {
         // Arrange
-        $builder = new ValidatorBuilder();
+        $builder = new ValidatorBuilder(new DefaultValidationStrategy());
 
         $builder->setValidators([
             'field' => [isFloat()],
@@ -77,7 +78,7 @@ final class isFloategerFieldTest extends TestCase
     public function testIfIntegerIsValid(): void
     {
         // Arrange
-        $builder = new ValidatorBuilder();
+        $builder = new ValidatorBuilder(new DefaultValidationStrategy());
 
         $builder->setValidators([
             'field' => [isFloat()],
@@ -98,7 +99,7 @@ final class isFloategerFieldTest extends TestCase
     public function testIfNonNumericStringIsInvalid(): void
     {
         // Arrange
-        $builder = new ValidatorBuilder();
+        $builder = new ValidatorBuilder(new DefaultValidationStrategy());
 
         $builder->setValidators([
             'field' => [isFloat()],
@@ -127,7 +128,7 @@ final class isFloategerFieldTest extends TestCase
     public function testIfNonNumericStringWithNumbersIsInvalid(): void
     {
         // Arrange
-        $builder = new ValidatorBuilder();
+        $builder = new ValidatorBuilder(new DefaultValidationStrategy());
 
         $builder->setValidators([
             'field' => [isFloat()],

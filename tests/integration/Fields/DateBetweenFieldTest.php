@@ -8,6 +8,7 @@ use DateTime;
 use DateTimeImmutable;
 use PHPUnit\Framework\TestCase;
 use PHPValidation\Builders\ValidatorBuilder;
+use PHPValidation\Strategies\DefaultValidationStrategy;
 use stdClass;
 
 use function PHPValidation\Functions\dateBetween;
@@ -17,7 +18,7 @@ final class DateBetweenFieldTest extends TestCase
     public function testIfDateStringBetweenMinMaxIsValid(): void
     {
         // Arrange
-        $builder = new ValidatorBuilder();
+        $builder = new ValidatorBuilder(new DefaultValidationStrategy());
 
         $format = 'Y-m-d';
         $dateMin = DateTime::createFromFormat($format, '2000-12-28');
@@ -42,7 +43,7 @@ final class DateBetweenFieldTest extends TestCase
     public function testIfDateStringLowerThanMinIsInvalid(): void
     {
         // Arrange
-        $builder = new ValidatorBuilder();
+        $builder = new ValidatorBuilder(new DefaultValidationStrategy());
 
         $format = 'Y-m-d';
         $dateMin = DateTime::createFromFormat($format, '2000-12-28');
@@ -77,7 +78,7 @@ final class DateBetweenFieldTest extends TestCase
     public function testIfDateStringLargerThanMaxIsInvalid(): void
     {
         // Arrange
-        $builder = new ValidatorBuilder();
+        $builder = new ValidatorBuilder(new DefaultValidationStrategy());
 
         $format = 'Y-m-d';
         $dateMin = DateTime::createFromFormat($format, '2000-12-28');
@@ -112,7 +113,7 @@ final class DateBetweenFieldTest extends TestCase
     public function testIfDateObjectBetweenMinMaxIsValid(): void
     {
         // Arrange
-        $builder = new ValidatorBuilder();
+        $builder = new ValidatorBuilder(new DefaultValidationStrategy());
 
         $format = 'Y-m-d';
         $dateMin = DateTime::createFromFormat($format, '2000-12-28');
@@ -137,7 +138,7 @@ final class DateBetweenFieldTest extends TestCase
     public function testIfDateObjectLowerThanMinIsInvalid(): void
     {
         // Arrange
-        $builder = new ValidatorBuilder();
+        $builder = new ValidatorBuilder(new DefaultValidationStrategy());
 
         $format = 'Y-m-d';
         $dateMin = DateTime::createFromFormat($format, '2000-12-28');
@@ -172,7 +173,7 @@ final class DateBetweenFieldTest extends TestCase
     public function testIfDateObjectLargerThanMaxIsInvalid(): void
     {
         // Arrange
-        $builder = new ValidatorBuilder();
+        $builder = new ValidatorBuilder(new DefaultValidationStrategy());
 
         $format = 'Y-m-d';
         $dateMin = DateTime::createFromFormat($format, '2000-12-28');
@@ -207,7 +208,7 @@ final class DateBetweenFieldTest extends TestCase
     public function testIfDateImmutableObjectBetweenMinMaxIsValid(): void
     {
         // Arrange
-        $builder = new ValidatorBuilder();
+        $builder = new ValidatorBuilder(new DefaultValidationStrategy());
 
         $format = 'Y-m-d';
         $dateMin = DateTime::createFromFormat($format, '2000-12-28');
@@ -232,7 +233,7 @@ final class DateBetweenFieldTest extends TestCase
     public function testIfDateImmutableObjectLowerThanMinIsInvalid(): void
     {
         // Arrange
-        $builder = new ValidatorBuilder();
+        $builder = new ValidatorBuilder(new DefaultValidationStrategy());
 
         $format = 'Y-m-d';
         $dateMin = DateTime::createFromFormat($format, '2000-12-28');
@@ -267,7 +268,7 @@ final class DateBetweenFieldTest extends TestCase
     public function testIfDateImmutableObjectLargerThanMaxIsInvalid(): void
     {
         // Arrange
-        $builder = new ValidatorBuilder();
+        $builder = new ValidatorBuilder(new DefaultValidationStrategy());
 
         $format = 'Y-m-d';
         $dateMin = DateTime::createFromFormat($format, '2000-12-28');
@@ -302,7 +303,7 @@ final class DateBetweenFieldTest extends TestCase
     public function testIfNonDateStringIsInvalid(): void
     {
         // Arrange
-        $builder = new ValidatorBuilder();
+        $builder = new ValidatorBuilder(new DefaultValidationStrategy());
 
         $format = 'Y-m-d';
         $dateMin = DateTime::createFromFormat($format, '2000-12-28');
@@ -337,7 +338,7 @@ final class DateBetweenFieldTest extends TestCase
     public function testIfArrayIsInvalid(): void
     {
         // Arrange
-        $builder = new ValidatorBuilder();
+        $builder = new ValidatorBuilder(new DefaultValidationStrategy());
 
         $format = 'Y-m-d';
         $dateMin = DateTime::createFromFormat($format, '2000-12-28');
@@ -372,7 +373,7 @@ final class DateBetweenFieldTest extends TestCase
     public function testIfRegularObjectIsInvalid(): void
     {
         // Arrange
-        $builder = new ValidatorBuilder();
+        $builder = new ValidatorBuilder(new DefaultValidationStrategy());
 
         $format = 'Y-m-d';
         $dateMin = DateTime::createFromFormat($format, '2000-12-28');

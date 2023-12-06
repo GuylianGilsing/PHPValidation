@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace PHPValidation\Builders;
 
 use ErrorException;
-use PHPValidation\Strategies\DefaultValidationStrategy;
 use PHPValidation\Strategies\ValidationStrategyInterface;
 use PHPValidation\Validator;
 use PHPValidation\ValidatorInterface;
@@ -27,9 +26,9 @@ final class ValidatorBuilder
      */
     private array $errorMessages = [];
 
-    public function __construct()
+    public function __construct(ValidationStrategyInterface $strategy)
     {
-        $this->strategy = new DefaultValidationStrategy();
+        $this->strategy = $strategy;
     }
 
     /**

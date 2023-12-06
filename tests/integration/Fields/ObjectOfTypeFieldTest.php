@@ -19,7 +19,7 @@ final class ObjectOfTypeFieldTest extends BypassFinalsTestCase
     public function testIfObjectWithDesiredTypeIsValid(): void
     {
         // Arrange
-        $builder = new ValidatorBuilder();
+        $builder = new ValidatorBuilder(new DefaultValidationStrategy());
 
         $builder->setValidators([
             'field' => [objectOfType(DateTime::class)],
@@ -40,7 +40,7 @@ final class ObjectOfTypeFieldTest extends BypassFinalsTestCase
     public function testIfObjectWithDesiredInterfaceTypeIsValid(): void
     {
         // Arrange
-        $builder = new ValidatorBuilder();
+        $builder = new ValidatorBuilder(new DefaultValidationStrategy());
 
         $builder->setValidators([
             'field' => [objectOfType(ValidationStrategyInterface::class)],
@@ -61,7 +61,7 @@ final class ObjectOfTypeFieldTest extends BypassFinalsTestCase
     public function testIfObjectWithoutDesiredTypeIsInvalid(): void
     {
         // Arrange
-        $builder = new ValidatorBuilder();
+        $builder = new ValidatorBuilder(new DefaultValidationStrategy());
 
         $fieldValidator = objectOfType(DateTime::class);
 
@@ -92,7 +92,7 @@ final class ObjectOfTypeFieldTest extends BypassFinalsTestCase
     public function testIfObjectWithoutDesiredInterfaceTypeIsInvalid(): void
     {
         // Arrange
-        $builder = new ValidatorBuilder();
+        $builder = new ValidatorBuilder(new DefaultValidationStrategy());
 
         $fieldValidator = objectOfType(ValidationStrategyInterface::class);
 
@@ -123,7 +123,7 @@ final class ObjectOfTypeFieldTest extends BypassFinalsTestCase
     public function testIfNonObjectTypeIsInvalid(): void
     {
         // Arrange
-        $builder = new ValidatorBuilder();
+        $builder = new ValidatorBuilder(new DefaultValidationStrategy());
 
         $fieldValidator = objectOfType(ValidationStrategyInterface::class);
 

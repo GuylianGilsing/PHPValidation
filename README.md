@@ -11,6 +11,7 @@ A simple validation library that allows you to write custom validators for your 
     - [Installation](#installation)
     - [Usage](#usage)
         - [Obtaining a validator](#obtaining-a-validator)
+            - [Through a factory](#through-a-factory)
         - [Configuring array field validation](#configuring-array-field-validation)
         - [Configuring custom error messages](#configuring-custom-error-messages)
         - [Using the validator](#using-the-validator)
@@ -112,8 +113,10 @@ A validator can be obtained through the `ValidatorBuilder` class:
 
 ```php
 use PHPValidation\Builders\ValidatorBuilder;
+use PHPValidation\Strategies\DefaultValidationStrategy;
 
-$builder = new ValidatorBuilder();
+$strategy = new DefaultValidationStrategy();
+$builder = new ValidatorBuilder($strategy);
 
 // Your configuration logic here...
 
@@ -129,7 +132,8 @@ use PHPValidation\Validator;
 
 use function PHPValidation\Functions\required;
 
-$builder = new ValidatorBuilder();
+$strategy = new DefaultValidationStrategy();
+$builder = new ValidatorBuilder($strategy);
 
 // Configures the field validators for each array field
 $builder->setValidators([
@@ -144,7 +148,8 @@ $builder->setErrorMessages([
 ]);
 
 // Passes a new validation handler/strategy to the actual validator
-$builder->setStrategy(new DefaultValidationStrategy());
+$newStrategy = // Your custom strategy here...
+$builder->setStrategy($newStrategy);
 
 // Registers a new validator class that will be returned when you build the validator
 $builder->setValidatorClassName(Validator::class);
@@ -153,6 +158,18 @@ $validator = $builder->build();
 ```
 
 **Note**: The builder already comes preconfigured with a strategy and validator class name, the example above just lists all possible configuration options.
+
+#### Through a factory
+A validator can also be obtained through the default factory:
+
+```php
+namespace PHPValidation\Factories\ValidatorFactory;
+
+$factory = new ValidatorFactory();
+$validator = $factory->createDefaultValidator();
+```
+
+**Note**: Adding more methods to this default factory class is possible by inheriting it.
 
 ### Configuring array field validation
 Within the validation builder, an array must be set that defines how a given array should be validated. This uses the following structure:
@@ -190,8 +207,10 @@ Once you have configured the validator builder, the validator can be built by us
 
 ```php
 use PHPValidation\Builders\ValidatorBuilder;
+use PHPValidation\Strategies\DefaultValidationStrategy;
 
-$builder = new ValidatorBuilder();
+$strategy = new DefaultValidationStrategy();
+$builder = new ValidatorBuilder($strategy);
 
 // Your configuration logic here...
 
@@ -202,10 +221,12 @@ The validator can then be used to validate an array:
 
 ```php
 use PHPValidation\Builders\ValidatorBuilder;
+use PHPValidation\Strategies\DefaultValidationStrategy;
 
 use function PHPValidation\Functions\required;
 
-$builder = new ValidatorBuilder();
+$strategy = new DefaultValidationStrategy();
+$builder = new ValidatorBuilder($strategy);
 
 $builder->setValidators([
     'field1' => [required()],
@@ -276,7 +297,8 @@ use PHPValidation\Builders\ValidatorBuilder;
 use PHPValidation\Strategies\DefaultValidationStrategy;
 use PHPValidation\Validator;
 
-$builder = new ValidatorBuilder();
+$strategy = new DefaultValidationStrategy();
+$builder = new ValidatorBuilder($strategy);
 
 $builder->setValidators([
     'field1' => [new RequiredField(), new CustomValidator()],
@@ -294,7 +316,8 @@ use PHPValidation\Validator;
 
 use function PHPValidation\Functions\required;
 
-$builder = new ValidatorBuilder();
+$strategy = new DefaultValidationStrategy();
+$builder = new ValidatorBuilder($strategy);
 
 $builder->setValidators([
     'field1' => [required(), custom_validator()],

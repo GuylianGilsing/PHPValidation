@@ -6,6 +6,7 @@ namespace PHPValidation\Tests\Integration\Fields;
 
 use PHPUnit\Framework\TestCase;
 use PHPValidation\Builders\ValidatorBuilder;
+use PHPValidation\Strategies\DefaultValidationStrategy;
 
 use function PHPValidation\Functions\isNumeric;
 
@@ -14,7 +15,7 @@ final class IsNumericFieldTest extends TestCase
     public function testIfNumericFloatStringIsValid(): void
     {
         // Arrange
-        $builder = new ValidatorBuilder();
+        $builder = new ValidatorBuilder(new DefaultValidationStrategy());
 
         $builder->setValidators([
             'field' => [isNumeric()],
@@ -35,7 +36,7 @@ final class IsNumericFieldTest extends TestCase
     public function testIfNumericIntStringIsValid(): void
     {
         // Arrange
-        $builder = new ValidatorBuilder();
+        $builder = new ValidatorBuilder(new DefaultValidationStrategy());
 
         $builder->setValidators([
             'field' => [isNumeric()],
@@ -56,7 +57,7 @@ final class IsNumericFieldTest extends TestCase
     public function testIfFloatIsValid(): void
     {
         // Arrange
-        $builder = new ValidatorBuilder();
+        $builder = new ValidatorBuilder(new DefaultValidationStrategy());
 
         $builder->setValidators([
             'field' => [isNumeric()],
@@ -77,7 +78,7 @@ final class IsNumericFieldTest extends TestCase
     public function testIfIntIsValid(): void
     {
         // Arrange
-        $builder = new ValidatorBuilder();
+        $builder = new ValidatorBuilder(new DefaultValidationStrategy());
 
         $builder->setValidators([
             'field' => [isNumeric()],
@@ -98,7 +99,7 @@ final class IsNumericFieldTest extends TestCase
     public function testIfNonNumericStringIsInvalid(): void
     {
         // Arrange
-        $builder = new ValidatorBuilder();
+        $builder = new ValidatorBuilder(new DefaultValidationStrategy());
 
         $builder->setValidators([
             'field' => [isNumeric()],
@@ -127,7 +128,7 @@ final class IsNumericFieldTest extends TestCase
     public function testIfNonNumericStringWithNumbersIsInvalid(): void
     {
         // Arrange
-        $builder = new ValidatorBuilder();
+        $builder = new ValidatorBuilder(new DefaultValidationStrategy());
 
         $builder->setValidators([
             'field' => [isNumeric()],

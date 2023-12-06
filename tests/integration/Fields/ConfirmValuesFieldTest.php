@@ -7,6 +7,7 @@ namespace PHPValidation\Tests\Integration\Fields;
 use ErrorException;
 use PHPUnit\Framework\TestCase;
 use PHPValidation\Builders\ValidatorBuilder;
+use PHPValidation\Strategies\DefaultValidationStrategy;
 
 use function PHPValidation\Functions\confirmValues;
 
@@ -15,7 +16,7 @@ final class ConfirmValuesFieldTest extends TestCase
     public function testIfMatchingFieldValuesAreValid(): void
     {
         // Arrange
-        $builder = new ValidatorBuilder();
+        $builder = new ValidatorBuilder(new DefaultValidationStrategy());
 
         $builder->setValidators([
             'field1' => [confirmValues('field2')],
@@ -39,7 +40,7 @@ final class ConfirmValuesFieldTest extends TestCase
     public function testIfNonMatchingFieldValuesAreInvalid(): void
     {
         // Arrange
-        $builder = new ValidatorBuilder();
+        $builder = new ValidatorBuilder(new DefaultValidationStrategy());
 
         $fieldValidator = confirmValues('field2');
 
@@ -76,7 +77,7 @@ final class ConfirmValuesFieldTest extends TestCase
         $this->expectException(ErrorException::class);
 
         // Arrange
-        $builder = new ValidatorBuilder();
+        $builder = new ValidatorBuilder(new DefaultValidationStrategy());
 
         $fieldValidator = confirmValues('field3');
 

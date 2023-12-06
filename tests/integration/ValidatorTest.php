@@ -6,6 +6,7 @@ namespace PHPValidation\Tests\Integration;
 
 use PHPUnit\Framework\TestCase;
 use PHPValidation\Builders\ValidatorBuilder;
+use PHPValidation\Strategies\DefaultValidationStrategy;
 
 use function PHPValidation\Functions\required;
 
@@ -14,7 +15,7 @@ final class ValidatorTest extends TestCase
     public function testIfCanValidateSimpleArray(): void
     {
         // Arrange
-        $builder = new ValidatorBuilder();
+        $builder = new ValidatorBuilder(new DefaultValidationStrategy());
 
         $builder->setValidators([
             'field1' => [required()],
@@ -35,7 +36,7 @@ final class ValidatorTest extends TestCase
     public function testIfErrorsArrayHasCorrectLayout(): void
     {
         // Arrange
-        $builder = new ValidatorBuilder();
+        $builder = new ValidatorBuilder(new DefaultValidationStrategy());
 
         $builder->setValidators([
             'field1' => [required()],
@@ -63,7 +64,7 @@ final class ValidatorTest extends TestCase
     public function testIfCanValidateNestedArrays(): void
     {
         // Arrange
-        $builder = new ValidatorBuilder();
+        $builder = new ValidatorBuilder(new DefaultValidationStrategy());
 
         $builder->setValidators([
             'field1' => [
@@ -88,7 +89,7 @@ final class ValidatorTest extends TestCase
     public function testIfNestedErrorsArrayHasCorrectLayout(): void
     {
         // Arrange
-        $builder = new ValidatorBuilder();
+        $builder = new ValidatorBuilder(new DefaultValidationStrategy());
 
         $builder->setValidators([
             'field1' => [
@@ -122,7 +123,7 @@ final class ValidatorTest extends TestCase
     public function testIfCanValidateNestedArrayFromEmptyDataArray(): void
     {
         // Arrange
-        $builder = new ValidatorBuilder();
+        $builder = new ValidatorBuilder(new DefaultValidationStrategy());
 
         $builder->setValidators([
             'field1' => [
@@ -145,7 +146,7 @@ final class ValidatorTest extends TestCase
     public function testIfNestedErrorsArrayHasCorrectLayoutFromEmptyDataArray(): void
     {
         // Arrange
-        $builder = new ValidatorBuilder();
+        $builder = new ValidatorBuilder(new DefaultValidationStrategy());
 
         $builder->setValidators([
             'field1' => [
@@ -178,7 +179,7 @@ final class ValidatorTest extends TestCase
     {
         // Arrange
         $expectedErrorMessage = "Field must be filled in!";
-        $builder = new ValidatorBuilder();
+        $builder = new ValidatorBuilder(new DefaultValidationStrategy());
 
         $builder->setValidators([
             'field1' => [required()],
@@ -213,7 +214,7 @@ final class ValidatorTest extends TestCase
     {
         // Arrange
         $expectedErrorMessage = "Field must be filled in!";
-        $builder = new ValidatorBuilder();
+        $builder = new ValidatorBuilder(new DefaultValidationStrategy());
 
         $builder->setValidators([
             'field1' => [
@@ -254,7 +255,7 @@ final class ValidatorTest extends TestCase
     {
         // Arrange
         $expectedErrorMessage = "Field must be filled in!";
-        $builder = new ValidatorBuilder();
+        $builder = new ValidatorBuilder(new DefaultValidationStrategy());
 
         $builder->setValidators([
             'field1' => [

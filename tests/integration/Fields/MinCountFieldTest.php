@@ -6,6 +6,7 @@ namespace PHPValidation\Tests\Integration\Fields;
 
 use PHPUnit\Framework\TestCase;
 use PHPValidation\Builders\ValidatorBuilder;
+use PHPValidation\Strategies\DefaultValidationStrategy;
 
 use function PHPValidation\Functions\minCount;
 
@@ -14,7 +15,7 @@ final class MinCountFieldTest extends TestCase
     public function testIfFieldWithMoreThanMinCountIsValid(): void
     {
         // Arrange
-        $builder = new ValidatorBuilder();
+        $builder = new ValidatorBuilder(new DefaultValidationStrategy());
 
         $builder->setValidators([
             'field' => [minCount(3)],
@@ -35,7 +36,7 @@ final class MinCountFieldTest extends TestCase
     public function testIfFieldWithExactMinCountIsValid(): void
     {
         // Arrange
-        $builder = new ValidatorBuilder();
+        $builder = new ValidatorBuilder(new DefaultValidationStrategy());
 
         $builder->setValidators([
             'field' => [minCount(3)],
@@ -56,7 +57,7 @@ final class MinCountFieldTest extends TestCase
     public function testIfFieldWithLowerMinCountIsInvalid(): void
     {
         // Arrange
-        $builder = new ValidatorBuilder();
+        $builder = new ValidatorBuilder(new DefaultValidationStrategy());
 
         $fieldValidator = minCount(3);
 
@@ -87,7 +88,7 @@ final class MinCountFieldTest extends TestCase
     public function testIfNonArrayFieldIsInvalid(): void
     {
         // Arrange
-        $builder = new ValidatorBuilder();
+        $builder = new ValidatorBuilder(new DefaultValidationStrategy());
 
         $fieldValidator = minCount(5);
 

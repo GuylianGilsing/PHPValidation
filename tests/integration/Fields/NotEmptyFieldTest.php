@@ -6,6 +6,7 @@ namespace PHPValidation\Tests\Integration\Fields;
 
 use PHPUnit\Framework\TestCase;
 use PHPValidation\Builders\ValidatorBuilder;
+use PHPValidation\Strategies\DefaultValidationStrategy;
 
 use function PHPValidation\Functions\notEmpty;
 
@@ -14,7 +15,7 @@ final class NotEmptyFieldTest extends TestCase
     public function testIfFilledFieldIsValid(): void
     {
         // Arrange
-        $builder = new ValidatorBuilder();
+        $builder = new ValidatorBuilder(new DefaultValidationStrategy());
 
         $builder->setValidators([
             'field' => [notEmpty()],
@@ -35,7 +36,7 @@ final class NotEmptyFieldTest extends TestCase
     public function testIfEmptyFieldIsInvalid(): void
     {
         // Arrange
-        $builder = new ValidatorBuilder();
+        $builder = new ValidatorBuilder(new DefaultValidationStrategy());
 
         $builder->setValidators([
             'field' => [notEmpty()],
@@ -64,7 +65,7 @@ final class NotEmptyFieldTest extends TestCase
     public function testIfIndexedArrayIsValid(): void
     {
         // Arrange
-        $builder = new ValidatorBuilder();
+        $builder = new ValidatorBuilder(new DefaultValidationStrategy());
 
         $builder->setValidators([
             'field' => [notEmpty()],
@@ -85,7 +86,7 @@ final class NotEmptyFieldTest extends TestCase
     public function testIfAssociativeArrayIsValid(): void
     {
         // Arrange
-        $builder = new ValidatorBuilder();
+        $builder = new ValidatorBuilder(new DefaultValidationStrategy());
 
         $builder->setValidators([
             'field' => [notEmpty()],
@@ -111,7 +112,7 @@ final class NotEmptyFieldTest extends TestCase
     public function testIfEmptyArrayIsInvalid(): void
     {
         // Arrange
-        $builder = new ValidatorBuilder();
+        $builder = new ValidatorBuilder(new DefaultValidationStrategy());
 
         $builder->setValidators([
             'field' => [notEmpty()],

@@ -6,6 +6,7 @@ namespace PHPValidation\Tests\Integration\Fields;
 
 use PHPUnit\Framework\TestCase;
 use PHPValidation\Builders\ValidatorBuilder;
+use PHPValidation\Strategies\DefaultValidationStrategy;
 
 use function PHPValidation\Functions\phoneNumber;
 
@@ -39,7 +40,7 @@ final class PhoneNumberFieldTest extends TestCase
             '+441233225114',
         ];
 
-        $builder = new ValidatorBuilder();
+        $builder = new ValidatorBuilder(new DefaultValidationStrategy());
 
         $builder->setValidators([
             'field' => [phoneNumber()],
@@ -67,7 +68,7 @@ final class PhoneNumberFieldTest extends TestCase
             '+55114560-7834',
         ];
 
-        $builder = new ValidatorBuilder();
+        $builder = new ValidatorBuilder(new DefaultValidationStrategy());
 
         $builder->setValidators([
             'field' => [phoneNumber()],

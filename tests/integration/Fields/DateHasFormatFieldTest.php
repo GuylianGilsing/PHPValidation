@@ -8,6 +8,7 @@ use DateTime;
 use DateTimeImmutable;
 use PHPUnit\Framework\TestCase;
 use PHPValidation\Builders\ValidatorBuilder;
+use PHPValidation\Strategies\DefaultValidationStrategy;
 use stdClass;
 
 use function PHPValidation\Functions\dateHasFormat;
@@ -17,7 +18,7 @@ final class DateHasFormatFieldTest extends TestCase
     public function testIfDateStringWithMatchingFormatIsValid(): void
     {
         // Arrange
-        $builder = new ValidatorBuilder();
+        $builder = new ValidatorBuilder(new DefaultValidationStrategy());
 
         $builder->setValidators([
             'field' => [dateHasFormat('Y-m-d')],
@@ -38,7 +39,7 @@ final class DateHasFormatFieldTest extends TestCase
     public function testIfDateStringWithNonMatchingFormatIsInvalid(): void
     {
         // Arrange
-        $builder = new ValidatorBuilder();
+        $builder = new ValidatorBuilder(new DefaultValidationStrategy());
 
         $fieldValidator = dateHasFormat('Y-m-d');
 
@@ -69,7 +70,7 @@ final class DateHasFormatFieldTest extends TestCase
     public function testIfDateObjectWithMatchingFormatIsValid(): void
     {
         // Arrange
-        $builder = new ValidatorBuilder();
+        $builder = new ValidatorBuilder(new DefaultValidationStrategy());
 
         $builder->setValidators([
             'field' => [dateHasFormat('Y-m-d')],
@@ -90,7 +91,7 @@ final class DateHasFormatFieldTest extends TestCase
     public function testIfDateObjectWithNonMatchingFormatIsValid(): void
     {
         // Arrange
-        $builder = new ValidatorBuilder();
+        $builder = new ValidatorBuilder(new DefaultValidationStrategy());
 
         $fieldValidator = dateHasFormat('Y-m-d');
 
@@ -113,7 +114,7 @@ final class DateHasFormatFieldTest extends TestCase
     public function testIfDateImmutableObjectWithMatchingFormatIsValid(): void
     {
         // Arrange
-        $builder = new ValidatorBuilder();
+        $builder = new ValidatorBuilder(new DefaultValidationStrategy());
 
         $builder->setValidators([
             'field' => [dateHasFormat('Y-m-d')],
@@ -134,7 +135,7 @@ final class DateHasFormatFieldTest extends TestCase
     public function testIfDateImmutableObjectWithNonMatchingFormatIsValid(): void
     {
         // Arrange
-        $builder = new ValidatorBuilder();
+        $builder = new ValidatorBuilder(new DefaultValidationStrategy());
 
         $fieldValidator = dateHasFormat('Y-m-d');
 
@@ -157,7 +158,7 @@ final class DateHasFormatFieldTest extends TestCase
     public function testIfNonDateStringIsInvalid(): void
     {
         // Arrange
-        $builder = new ValidatorBuilder();
+        $builder = new ValidatorBuilder(new DefaultValidationStrategy());
 
         $fieldValidator = dateHasFormat('Y-m-d');
 
@@ -188,7 +189,7 @@ final class DateHasFormatFieldTest extends TestCase
     public function testIfArrayIsInvalid(): void
     {
         // Arrange
-        $builder = new ValidatorBuilder();
+        $builder = new ValidatorBuilder(new DefaultValidationStrategy());
 
         $fieldValidator = dateHasFormat('Y-m-d');
 
@@ -219,7 +220,7 @@ final class DateHasFormatFieldTest extends TestCase
     public function testIfRegularObjectIsInvalid(): void
     {
         // Arrange
-        $builder = new ValidatorBuilder();
+        $builder = new ValidatorBuilder(new DefaultValidationStrategy());
 
         $fieldValidator = dateHasFormat('Y-m-d');
 

@@ -6,6 +6,7 @@ namespace PHPValidation\Tests\Integration\Fields;
 
 use PHPUnit\Framework\TestCase;
 use PHPValidation\Builders\ValidatorBuilder;
+use PHPValidation\Strategies\DefaultValidationStrategy;
 
 use function PHPValidation\Functions\equals;
 
@@ -14,7 +15,7 @@ final class EqualsFieldTest extends TestCase
     public function testIfMatchingNonStrictFieldIsValid(): void
     {
         // Arrange
-        $builder = new ValidatorBuilder();
+        $builder = new ValidatorBuilder(new DefaultValidationStrategy());
 
         $builder->setValidators([
             'field' => [equals('12')],
@@ -35,7 +36,7 @@ final class EqualsFieldTest extends TestCase
     public function testIfMatchingStrictFieldIsValid(): void
     {
         // Arrange
-        $builder = new ValidatorBuilder();
+        $builder = new ValidatorBuilder(new DefaultValidationStrategy());
 
         $builder->setValidators([
             'field' => [equals('12', true)],
@@ -56,7 +57,7 @@ final class EqualsFieldTest extends TestCase
     public function testIfNonMatchingStrictFieldIsInvalid(): void
     {
         // Arrange
-        $builder = new ValidatorBuilder();
+        $builder = new ValidatorBuilder(new DefaultValidationStrategy());
 
         $fieldValidator = equals('12', true);
 

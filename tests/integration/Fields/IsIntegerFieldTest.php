@@ -6,6 +6,7 @@ namespace PHPValidation\Tests\Integration\Fields;
 
 use PHPUnit\Framework\TestCase;
 use PHPValidation\Builders\ValidatorBuilder;
+use PHPValidation\Strategies\DefaultValidationStrategy;
 
 use function PHPValidation\Functions\isInt;
 
@@ -14,7 +15,7 @@ final class isIntegerFieldTest extends TestCase
     public function testIfIntegerStringIsValid(): void
     {
         // Arrange
-        $builder = new ValidatorBuilder();
+        $builder = new ValidatorBuilder(new DefaultValidationStrategy());
 
         $builder->setValidators([
             'field' => [isInt()],
@@ -35,7 +36,7 @@ final class isIntegerFieldTest extends TestCase
     public function testIfIntegerIsValid(): void
     {
         // Arrange
-        $builder = new ValidatorBuilder();
+        $builder = new ValidatorBuilder(new DefaultValidationStrategy());
 
         $builder->setValidators([
             'field' => [isInt()],
@@ -56,7 +57,7 @@ final class isIntegerFieldTest extends TestCase
     public function testIfFloatIsInvalid(): void
     {
         // Arrange
-        $builder = new ValidatorBuilder();
+        $builder = new ValidatorBuilder(new DefaultValidationStrategy());
 
         $builder->setValidators([
             'field' => [isInt()],
@@ -85,7 +86,7 @@ final class isIntegerFieldTest extends TestCase
     public function testIfFloatStringIsInvalid(): void
     {
         // Arrange
-        $builder = new ValidatorBuilder();
+        $builder = new ValidatorBuilder(new DefaultValidationStrategy());
 
         $builder->setValidators([
             'field' => [isInt()],
@@ -114,7 +115,7 @@ final class isIntegerFieldTest extends TestCase
     public function testIfNonNumericStringIsInvalid(): void
     {
         // Arrange
-        $builder = new ValidatorBuilder();
+        $builder = new ValidatorBuilder(new DefaultValidationStrategy());
 
         $builder->setValidators([
             'field' => [isInt()],
@@ -143,7 +144,7 @@ final class isIntegerFieldTest extends TestCase
     public function testIfNonNumericStringWithNumbersIsInvalid(): void
     {
         // Arrange
-        $builder = new ValidatorBuilder();
+        $builder = new ValidatorBuilder(new DefaultValidationStrategy());
 
         $builder->setValidators([
             'field' => [isInt()],

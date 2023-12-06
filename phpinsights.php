@@ -96,6 +96,16 @@ return [
             'absoluteLineLimit' => 120,
             'ignoreComments' => true,
         ],
+        \NunoMaduro\PhpInsights\Domain\Insights\ForbiddenNormalClasses::class => [
+            'exclude' => [
+                './src/Factories/ValidatorFactory.php',
+            ],
+        ],
+        \SlevomatCodingStandard\Sniffs\Operators\DisallowEqualOperatorsSniff::class => [
+            'exclude' => [
+                './src/Fields/EqualsField.php',
+            ],
+        ],
     ],
 
     /*

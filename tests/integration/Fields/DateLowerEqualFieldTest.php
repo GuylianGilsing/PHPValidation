@@ -8,6 +8,7 @@ use DateTime;
 use DateTimeImmutable;
 use PHPUnit\Framework\TestCase;
 use PHPValidation\Builders\ValidatorBuilder;
+use PHPValidation\Strategies\DefaultValidationStrategy;
 use stdClass;
 
 use function PHPValidation\Functions\dateLowerEqual;
@@ -17,7 +18,7 @@ final class DateLowerEqualFieldTest extends TestCase
     public function testIfDateStringWithLowerDateIsValid(): void
     {
         // Arrange
-        $builder = new ValidatorBuilder();
+        $builder = new ValidatorBuilder(new DefaultValidationStrategy());
 
         $builder->setValidators([
             'field' => [dateLowerEqual(DateTime::createFromFormat('Y-m-d', '2000-12-31'), 'Y-m-d')],
@@ -38,7 +39,7 @@ final class DateLowerEqualFieldTest extends TestCase
     public function testIfDateStringWithEqualDateIsValid(): void
     {
         // Arrange
-        $builder = new ValidatorBuilder();
+        $builder = new ValidatorBuilder(new DefaultValidationStrategy());
 
         $builder->setValidators([
             'field' => [dateLowerEqual(DateTime::createFromFormat('Y-m-d', '2000-12-31'), 'Y-m-d')],
@@ -59,7 +60,7 @@ final class DateLowerEqualFieldTest extends TestCase
     public function testIfDateStringWithGreaterDateIsInvalid(): void
     {
         // Arrange
-        $builder = new ValidatorBuilder();
+        $builder = new ValidatorBuilder(new DefaultValidationStrategy());
 
         $fieldValidator = dateLowerEqual(DateTime::createFromFormat('Y-m-d', '2000-12-30'), 'Y-m-d');
 
@@ -90,7 +91,7 @@ final class DateLowerEqualFieldTest extends TestCase
     public function testIfDateStringWithInvalidFormatIsInvalid(): void
     {
         // Arrange
-        $builder = new ValidatorBuilder();
+        $builder = new ValidatorBuilder(new DefaultValidationStrategy());
 
         $fieldValidator = dateLowerEqual(DateTime::createFromFormat('Y-m-d', '2000-12-31'), 'Y-m-d');
 
@@ -121,7 +122,7 @@ final class DateLowerEqualFieldTest extends TestCase
     public function testIfDateObjectWithLowerDateIsValid(): void
     {
         // Arrange
-        $builder = new ValidatorBuilder();
+        $builder = new ValidatorBuilder(new DefaultValidationStrategy());
 
         $builder->setValidators([
             'field' => [dateLowerEqual(DateTime::createFromFormat('Y-m-d', '2000-12-31'), 'Y-m-d')],
@@ -142,7 +143,7 @@ final class DateLowerEqualFieldTest extends TestCase
     public function testIfDateObjectWithEqualDateIsValid(): void
     {
         // Arrange
-        $builder = new ValidatorBuilder();
+        $builder = new ValidatorBuilder(new DefaultValidationStrategy());
 
         $builder->setValidators([
             'field' => [dateLowerEqual(DateTime::createFromFormat('Y-m-d', '2000-12-31'), 'Y-m-d')],
@@ -163,7 +164,7 @@ final class DateLowerEqualFieldTest extends TestCase
     public function testIfDateObjectWithGreaterDateIsInvalid(): void
     {
         // Arrange
-        $builder = new ValidatorBuilder();
+        $builder = new ValidatorBuilder(new DefaultValidationStrategy());
 
         $fieldValidator = dateLowerEqual(DateTime::createFromFormat('Y-m-d', '2000-12-30'), 'Y-m-d');
 
@@ -194,7 +195,7 @@ final class DateLowerEqualFieldTest extends TestCase
     public function testIfDateImmutableObjectWithLowerDateIsValid(): void
     {
         // Arrange
-        $builder = new ValidatorBuilder();
+        $builder = new ValidatorBuilder(new DefaultValidationStrategy());
 
         $builder->setValidators([
             'field' => [dateLowerEqual(DateTime::createFromFormat('Y-m-d', '2000-12-31'), 'Y-m-d')],
@@ -215,7 +216,7 @@ final class DateLowerEqualFieldTest extends TestCase
     public function testIfDateImmutableObjectWithEqualDateIsValid(): void
     {
         // Arrange
-        $builder = new ValidatorBuilder();
+        $builder = new ValidatorBuilder(new DefaultValidationStrategy());
 
         $builder->setValidators([
             'field' => [dateLowerEqual(DateTime::createFromFormat('Y-m-d', '2000-12-31'), 'Y-m-d')],
@@ -236,7 +237,7 @@ final class DateLowerEqualFieldTest extends TestCase
     public function testIfDateImmutableObjectWithGreaterDateIsInvalid(): void
     {
         // Arrange
-        $builder = new ValidatorBuilder();
+        $builder = new ValidatorBuilder(new DefaultValidationStrategy());
 
         $fieldValidator = dateLowerEqual(DateTimeImmutable::createFromFormat('Y-m-d', '2000-12-30'), 'Y-m-d');
 
@@ -267,7 +268,7 @@ final class DateLowerEqualFieldTest extends TestCase
     public function testIfNonDateStringIsInvalid(): void
     {
         // Arrange
-        $builder = new ValidatorBuilder();
+        $builder = new ValidatorBuilder(new DefaultValidationStrategy());
 
         $fieldValidator = dateLowerEqual(DateTime::createFromFormat('Y-m-d', '2000-12-31'));
 
@@ -298,7 +299,7 @@ final class DateLowerEqualFieldTest extends TestCase
     public function testIfArrayIsInvalid(): void
     {
         // Arrange
-        $builder = new ValidatorBuilder();
+        $builder = new ValidatorBuilder(new DefaultValidationStrategy());
 
         $fieldValidator = dateLowerEqual(DateTime::createFromFormat('Y-m-d', '2000-12-31'));
 
@@ -329,7 +330,7 @@ final class DateLowerEqualFieldTest extends TestCase
     public function testIfRegularObjectIsInvalid(): void
     {
         // Arrange
-        $builder = new ValidatorBuilder();
+        $builder = new ValidatorBuilder(new DefaultValidationStrategy());
 
         $fieldValidator = dateLowerEqual(DateTime::createFromFormat('Y-m-d', '2000-12-31'));
 

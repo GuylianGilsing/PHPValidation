@@ -8,6 +8,7 @@ use DateTime;
 use DateTimeImmutable;
 use PHPUnit\Framework\TestCase;
 use PHPValidation\Builders\ValidatorBuilder;
+use PHPValidation\Strategies\DefaultValidationStrategy;
 use stdClass;
 
 use function PHPValidation\Functions\dateEquals;
@@ -17,7 +18,7 @@ final class DateEqualsFieldTest extends TestCase
     public function testIfDateStringWithMatchingDateIsValid(): void
     {
         // Arrange
-        $builder = new ValidatorBuilder();
+        $builder = new ValidatorBuilder(new DefaultValidationStrategy());
 
         $builder->setValidators([
             'field' => [dateEquals(DateTime::createFromFormat('Y-m-d', '2000-12-31'), 'Y-m-d')],
@@ -38,7 +39,7 @@ final class DateEqualsFieldTest extends TestCase
     public function testIfDateStringWithNonMatchingDateIsInvalid(): void
     {
         // Arrange
-        $builder = new ValidatorBuilder();
+        $builder = new ValidatorBuilder(new DefaultValidationStrategy());
 
         $fieldValidator = dateEquals(DateTime::createFromFormat('Y-m-d', '2000-12-31'), 'Y-m-d');
 
@@ -69,7 +70,7 @@ final class DateEqualsFieldTest extends TestCase
     public function testIfDateStringWithInvalidFormatIsInvalid(): void
     {
         // Arrange
-        $builder = new ValidatorBuilder();
+        $builder = new ValidatorBuilder(new DefaultValidationStrategy());
 
         $fieldValidator = dateEquals(DateTime::createFromFormat('Y-m-d', '2000-12-31'), 'Y-m-d');
 
@@ -100,7 +101,7 @@ final class DateEqualsFieldTest extends TestCase
     public function testIfDateObjectWithMatchingDateIsValid(): void
     {
         // Arrange
-        $builder = new ValidatorBuilder();
+        $builder = new ValidatorBuilder(new DefaultValidationStrategy());
 
         $builder->setValidators([
             'field' => [dateEquals(DateTime::createFromFormat('Y-m-d', '2000-12-31'), 'Y-m-d')],
@@ -121,7 +122,7 @@ final class DateEqualsFieldTest extends TestCase
     public function testIfDateObjectWithNonMatchingDateIsInvalid(): void
     {
         // Arrange
-        $builder = new ValidatorBuilder();
+        $builder = new ValidatorBuilder(new DefaultValidationStrategy());
 
         $fieldValidator = dateEquals(DateTime::createFromFormat('Y-m-d', '2000-12-31'), 'Y-m-d');
 
@@ -152,7 +153,7 @@ final class DateEqualsFieldTest extends TestCase
     public function testIfDateImmutableObjectWithMatchingDateIsValid(): void
     {
         // Arrange
-        $builder = new ValidatorBuilder();
+        $builder = new ValidatorBuilder(new DefaultValidationStrategy());
 
         $builder->setValidators([
             'field' => [dateEquals(DateTime::createFromFormat('Y-m-d', '2000-12-31'), 'Y-m-d')],
@@ -173,7 +174,7 @@ final class DateEqualsFieldTest extends TestCase
     public function testIfDateImmutableObjectWithNonMatchingDateIsInvalid(): void
     {
         // Arrange
-        $builder = new ValidatorBuilder();
+        $builder = new ValidatorBuilder(new DefaultValidationStrategy());
 
         $fieldValidator = dateEquals(DateTimeImmutable::createFromFormat('Y-m-d', '2000-12-31'), 'Y-m-d');
 
@@ -204,7 +205,7 @@ final class DateEqualsFieldTest extends TestCase
     public function testIfNonDateStringIsInvalid(): void
     {
         // Arrange
-        $builder = new ValidatorBuilder();
+        $builder = new ValidatorBuilder(new DefaultValidationStrategy());
 
         $fieldValidator = dateEquals(DateTime::createFromFormat('Y-m-d', '2000-12-31'));
 
@@ -235,7 +236,7 @@ final class DateEqualsFieldTest extends TestCase
     public function testIfArrayIsInvalid(): void
     {
         // Arrange
-        $builder = new ValidatorBuilder();
+        $builder = new ValidatorBuilder(new DefaultValidationStrategy());
 
         $fieldValidator = dateEquals(DateTime::createFromFormat('Y-m-d', '2000-12-31'));
 
@@ -266,7 +267,7 @@ final class DateEqualsFieldTest extends TestCase
     public function testIfRegularObjectIsInvalid(): void
     {
         // Arrange
-        $builder = new ValidatorBuilder();
+        $builder = new ValidatorBuilder(new DefaultValidationStrategy());
 
         $fieldValidator = dateEquals(DateTime::createFromFormat('Y-m-d', '2000-12-31'));
 

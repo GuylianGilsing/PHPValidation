@@ -6,6 +6,7 @@ namespace PHPValidation\Tests\Integration\Fields;
 
 use PHPUnit\Framework\TestCase;
 use PHPValidation\Builders\ValidatorBuilder;
+use PHPValidation\Strategies\DefaultValidationStrategy;
 
 use function PHPValidation\Functions\hasKeys;
 
@@ -14,7 +15,7 @@ final class HasKeysFieldTest extends TestCase
     public function testIfMatchingArrayIsValid(): void
     {
         // Arrange
-        $builder = new ValidatorBuilder();
+        $builder = new ValidatorBuilder(new DefaultValidationStrategy());
 
         $builder->setValidators([
             'field' => [hasKeys(['key1', 'key2', 'key3'])],
@@ -39,7 +40,7 @@ final class HasKeysFieldTest extends TestCase
     public function testIfNotMatchingArrayIsInvalid(): void
     {
         // Arrange
-        $builder = new ValidatorBuilder();
+        $builder = new ValidatorBuilder(new DefaultValidationStrategy());
 
         $fieldValidator = hasKeys(['key1', 'key2', 'key3']);
 
@@ -70,7 +71,7 @@ final class HasKeysFieldTest extends TestCase
     public function testIfNonArrayIsInvalid(): void
     {
         // Arrange
-        $builder = new ValidatorBuilder();
+        $builder = new ValidatorBuilder(new DefaultValidationStrategy());
 
         $fieldValidator = hasKeys(['key1', 'key2', 'key3']);
 

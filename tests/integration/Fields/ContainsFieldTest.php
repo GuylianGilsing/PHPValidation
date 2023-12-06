@@ -6,6 +6,7 @@ namespace PHPValidation\Tests\Integration\Fields;
 
 use PHPUnit\Framework\TestCase;
 use PHPValidation\Builders\ValidatorBuilder;
+use PHPValidation\Strategies\DefaultValidationStrategy;
 
 use function PHPValidation\Functions\contains;
 
@@ -14,7 +15,7 @@ final class ContainsFieldTest extends TestCase
     public function testIfStringWithMatchingSubstringIsValid(): void
     {
         // Arrange
-        $builder = new ValidatorBuilder();
+        $builder = new ValidatorBuilder(new DefaultValidationStrategy());
 
         $builder->setValidators([
             'field' => [contains('substring')],
@@ -35,7 +36,7 @@ final class ContainsFieldTest extends TestCase
     public function testIfStringWithoutMatchingSubstringIsInvalid(): void
     {
         // Arrange
-        $builder = new ValidatorBuilder();
+        $builder = new ValidatorBuilder(new DefaultValidationStrategy());
 
         $fieldValidator = contains('substring');
 

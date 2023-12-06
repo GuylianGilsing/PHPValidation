@@ -6,6 +6,7 @@ namespace PHPValidation\Tests\Integration\Fields;
 
 use PHPUnit\Framework\TestCase;
 use PHPValidation\Builders\ValidatorBuilder;
+use PHPValidation\Strategies\DefaultValidationStrategy;
 
 use function PHPValidation\Functions\minLength;
 
@@ -14,7 +15,7 @@ final class MinLengthFieldTest extends TestCase
     public function testIfFieldWithMoreThanMinLengthIsValid(): void
     {
         // Arrange
-        $builder = new ValidatorBuilder();
+        $builder = new ValidatorBuilder(new DefaultValidationStrategy());
 
         $builder->setValidators([
             'field' => [minLength(5)],
@@ -35,7 +36,7 @@ final class MinLengthFieldTest extends TestCase
     public function testIfFieldWithExactMinLengthIsValid(): void
     {
         // Arrange
-        $builder = new ValidatorBuilder();
+        $builder = new ValidatorBuilder(new DefaultValidationStrategy());
 
         $builder->setValidators([
             'field' => [minLength(5)],
@@ -56,7 +57,7 @@ final class MinLengthFieldTest extends TestCase
     public function testIfFieldWithLowerMinLengthIsInvalid(): void
     {
         // Arrange
-        $builder = new ValidatorBuilder();
+        $builder = new ValidatorBuilder(new DefaultValidationStrategy());
 
         $fieldValidator = minLength(5);
 
@@ -87,7 +88,7 @@ final class MinLengthFieldTest extends TestCase
     public function testIfNonStringFieldIsInvalid(): void
     {
         // Arrange
-        $builder = new ValidatorBuilder();
+        $builder = new ValidatorBuilder(new DefaultValidationStrategy());
 
         $fieldValidator = minLength(5);
 

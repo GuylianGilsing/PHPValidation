@@ -6,6 +6,7 @@ namespace PHPValidation\Tests\Integration\Fields;
 
 use PHPUnit\Framework\TestCase;
 use PHPValidation\Builders\ValidatorBuilder;
+use PHPValidation\Strategies\DefaultValidationStrategy;
 
 use function PHPValidation\Functions\in;
 
@@ -14,7 +15,7 @@ final class InFieldTest extends TestCase
     public function testIfValueThatIsInArrayIsValid(): void
     {
         // Arrange
-        $builder = new ValidatorBuilder();
+        $builder = new ValidatorBuilder(new DefaultValidationStrategy());
 
         $builder->setValidators([
             'field' => [in(['value1', 'value2', 'value3'])],
@@ -35,7 +36,7 @@ final class InFieldTest extends TestCase
     public function testIfIntegerValueThatIsInArrayIsValid(): void
     {
         // Arrange
-        $builder = new ValidatorBuilder();
+        $builder = new ValidatorBuilder(new DefaultValidationStrategy());
 
         $builder->setValidators([
             'field' => [in([1, 2, 3])],
@@ -56,7 +57,7 @@ final class InFieldTest extends TestCase
     public function testIfFloatValueThatIsInArrayIsValid(): void
     {
         // Arrange
-        $builder = new ValidatorBuilder();
+        $builder = new ValidatorBuilder(new DefaultValidationStrategy());
 
         $builder->setValidators([
             'field' => [in([1.20, 2.20, 3.20])],
@@ -77,7 +78,7 @@ final class InFieldTest extends TestCase
     public function testIfBoolValueThatIsInArrayIsValid(): void
     {
         // Arrange
-        $builder = new ValidatorBuilder();
+        $builder = new ValidatorBuilder(new DefaultValidationStrategy());
 
         $builder->setValidators([
             'field' => [in([true])],
@@ -98,7 +99,7 @@ final class InFieldTest extends TestCase
     public function testIfValueThatIsNotInArrayIsInvalid(): void
     {
         // Arrange
-        $builder = new ValidatorBuilder();
+        $builder = new ValidatorBuilder(new DefaultValidationStrategy());
 
         $fieldValidator = in(['value1', 'value2', 'value3']);
 
@@ -129,7 +130,7 @@ final class InFieldTest extends TestCase
     public function testIfArrayValueThatIsInArrayIsValid(): void
     {
         // Arrange
-        $builder = new ValidatorBuilder();
+        $builder = new ValidatorBuilder(new DefaultValidationStrategy());
 
         $fieldValidator = in(['value1', 'value2', 'value3']);
         $fieldValue = ['value1', 'value2', 'value3'];
@@ -153,7 +154,7 @@ final class InFieldTest extends TestCase
     public function testIfSingularArrayValueThatIsNotInArrayIsInvalid(): void
     {
         // Arrange
-        $builder = new ValidatorBuilder();
+        $builder = new ValidatorBuilder(new DefaultValidationStrategy());
 
         $fieldValidator = in(['value1', 'value2', 'value3']);
         $fieldValue = ['value4'];
@@ -186,7 +187,7 @@ final class InFieldTest extends TestCase
     public function testIfNonStringValueIsInvalid(): void
     {
         // Arrange
-        $builder = new ValidatorBuilder();
+        $builder = new ValidatorBuilder(new DefaultValidationStrategy());
 
         $fieldValidator = in(['value1', 'value2', 'value3']);
         $fieldValue = ['non', 'string', 'value'];
